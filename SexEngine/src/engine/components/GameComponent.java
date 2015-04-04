@@ -1,15 +1,13 @@
 package engine.components;
 
-import engine.core.GameObject;
-
-
+import engine.core.Actor;
 
 public abstract class GameComponent 
 {
-	//Fields
-	protected String name;
-	protected GameObject parent;
 	
+	//Fields
+	protected Actor parent;
+	protected boolean isEnabled;
 	
 	//Constructors
 	public 
@@ -22,12 +20,22 @@ public abstract class GameComponent
 	public abstract String 	
 	getName();
 	
-	public GameObject
+	public Actor
 	getParent()
 	{
 		return parent;
 	}
 	
+	public void enable()
+	{
+		isEnabled = true;
+	}
+	
+	public void disable()
+	{
+		isEnabled = false;
+	}
 	
 	
+
 }
