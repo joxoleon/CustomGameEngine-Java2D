@@ -1,0 +1,27 @@
+Problem:
+
+Dealokacija
+
+
+
+Resenje:
+
+
+
+
+
+
+
+
+
+
+Actor:
+Od njega krece unistavanje. Ima isDestroyed i destructionCounter. Pozivom metode destroy() on se smjesta u destruction listu God-a (referenca na GameObject).
+boolean isLastRenderDone == true i boolean isDestroyed == true i int destructionCounter == 0, God ukloni iz destruction liste i rasturi objekat.
+
+Brisanje Actora - u God destruction listu, raskidaju se veze u svim update managerima, ostaje vezan samo render manager za poslednje iscrtavanje.
+To se desava na nivou Actora (prebaciti Transform i staviti u GameComponent Actor parent, a ne GameObject parent). God ima referencu na citav objekat, pa su
+sve komponente objekta i dalje tu.
+
+Render manager kada dodje do sledeceg iscrtavanja iv idi da je isdestroyed true vadi iz liste i postavlja last render na true.
+God kad vidid a je destruct count na 0 i da je lastrender true, brise objekat i vraca sve komponente i game object u njihove poolove ili ih brise.
