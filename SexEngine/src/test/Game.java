@@ -10,6 +10,11 @@ import engine.core.GameWrapper;
 public class Game
 extends GameWrapper
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Rectangle2D rec = new Rectangle2D.Double(0, 0, 100, 150);
 	
 	public

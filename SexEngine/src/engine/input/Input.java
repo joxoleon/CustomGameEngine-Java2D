@@ -13,6 +13,11 @@ public class Input
 extends JPanel
 implements KeyListener, MouseListener, MouseMotionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static Input 			input 					= new Input();
 	
 	private static KeyboardState 	previousKeyboardState 	= new KeyboardState();
@@ -150,20 +155,20 @@ implements KeyListener, MouseListener, MouseMotionListener
         {
             case MouseEvent.BUTTON1:
             {
-                input.nextMouseState.buttonStates.remove(Buttons.LeftButton);
-                input.nextMouseState.buttonStates.put(Buttons.LeftButton, ButtonState.PRESSED);
+                nextMouseState.buttonStates.remove(Buttons.LeftButton);
+                nextMouseState.buttonStates.put(Buttons.LeftButton, ButtonState.PRESSED);
             } break;
                 
             case MouseEvent.BUTTON2:
             {
-            	input.nextMouseState.buttonStates.remove(Buttons.MiddleButton);
-            	input.nextMouseState.buttonStates.put(Buttons.MiddleButton, ButtonState.PRESSED);
+            	nextMouseState.buttonStates.remove(Buttons.MiddleButton);
+            	nextMouseState.buttonStates.put(Buttons.MiddleButton, ButtonState.PRESSED);
             } break;
                 
             case MouseEvent.BUTTON3:
             {
-            	input.nextMouseState.buttonStates.remove(Buttons.RightButton);
-            	input.nextMouseState.buttonStates.put(Buttons.RightButton, ButtonState.PRESSED);
+            	nextMouseState.buttonStates.remove(Buttons.RightButton);
+            	nextMouseState.buttonStates.put(Buttons.RightButton, ButtonState.PRESSED);
             } break;
                 
             default:
@@ -179,20 +184,20 @@ implements KeyListener, MouseListener, MouseMotionListener
         {
             case MouseEvent.BUTTON1:
             {
-            	input.nextMouseState.buttonStates.remove(Buttons.LeftButton);
-            	input.nextMouseState.buttonStates.put(Buttons.LeftButton, ButtonState.RELEASED);
+            	nextMouseState.buttonStates.remove(Buttons.LeftButton);
+            	nextMouseState.buttonStates.put(Buttons.LeftButton, ButtonState.RELEASED);
             } break;
                 
             case MouseEvent.BUTTON2:
             {
-            	input.nextMouseState.buttonStates.remove(Buttons.MiddleButton);
-            	input.nextMouseState.buttonStates.put(Buttons.MiddleButton, ButtonState.RELEASED);
+            	nextMouseState.buttonStates.remove(Buttons.MiddleButton);
+            	nextMouseState.buttonStates.put(Buttons.MiddleButton, ButtonState.RELEASED);
             } break;
                     
             case MouseEvent.BUTTON3:
             {
-            	input.nextMouseState.buttonStates.remove(Buttons.RightButton);
-            	input.nextMouseState.buttonStates.put(Buttons.RightButton, ButtonState.RELEASED);
+            	nextMouseState.buttonStates.remove(Buttons.RightButton);
+            	nextMouseState.buttonStates.put(Buttons.RightButton, ButtonState.RELEASED);
             } break;
         }
 	}
@@ -209,7 +214,7 @@ implements KeyListener, MouseListener, MouseMotionListener
 	public void
 	mouseMoved(MouseEvent event)
 	{
-		input.nextMouseState.position = event.getLocationOnScreen();
+		nextMouseState.position = event.getLocationOnScreen();
 	}
 	
 	
@@ -222,297 +227,297 @@ implements KeyListener, MouseListener, MouseMotionListener
         {
             case KeyEvent.VK_A:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.A);
-                input.nextKeyboardState.keyStates.put(Keys.A, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.A);
+                nextKeyboardState.keyStates.put(Keys.A, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_ADD:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Add);
-                input.nextKeyboardState.keyStates.put(Keys.Add, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Add);
+                nextKeyboardState.keyStates.put(Keys.Add, KeyState.KEY_DOWN);
             } break;
                
             case KeyEvent.VK_B:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.B);
-                input.nextKeyboardState.keyStates.put(Keys.B, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.B);
+                nextKeyboardState.keyStates.put(Keys.B, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_BACK_SPACE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Back);
-                input.nextKeyboardState.keyStates.put(Keys.Back, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Back);
+                nextKeyboardState.keyStates.put(Keys.Back, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_C:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.C);
-                input.nextKeyboardState.keyStates.put(Keys.C, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.C);
+                nextKeyboardState.keyStates.put(Keys.C, KeyState.KEY_DOWN);
             } break;
             
             case KeyEvent.VK_CAPS_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.CapsLock);
-                input.nextKeyboardState.keyStates.put(Keys.CapsLock, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.CapsLock);
+                nextKeyboardState.keyStates.put(Keys.CapsLock, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_D:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D);
-                input.nextKeyboardState.keyStates.put(Keys.D, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D);
+                nextKeyboardState.keyStates.put(Keys.D, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_0:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D0);
-                input.nextKeyboardState.keyStates.put(Keys.D0, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D0);
+                nextKeyboardState.keyStates.put(Keys.D0, KeyState.KEY_DOWN);
             } break;
                     
             case KeyEvent.VK_1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D1);
-                input.nextKeyboardState.keyStates.put(Keys.D1, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D1);
+                nextKeyboardState.keyStates.put(Keys.D1, KeyState.KEY_DOWN);
             } break;
                         
             case KeyEvent.VK_2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D2);
-                input.nextKeyboardState.keyStates.put(Keys.D2, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D2);
+                nextKeyboardState.keyStates.put(Keys.D2, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D3);
-                input.nextKeyboardState.keyStates.put(Keys.D3, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D3);
+                nextKeyboardState.keyStates.put(Keys.D3, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D4);
-                input.nextKeyboardState.keyStates.put(Keys.D4, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D4);
+                nextKeyboardState.keyStates.put(Keys.D4, KeyState.KEY_DOWN);
             } break;
             
             case KeyEvent.VK_5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D5);
-                input.nextKeyboardState.keyStates.put(Keys.D5, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D5);
+                nextKeyboardState.keyStates.put(Keys.D5, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D6);
-                input.nextKeyboardState.keyStates.put(Keys.D6, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D6);
+                nextKeyboardState.keyStates.put(Keys.D6, KeyState.KEY_DOWN);
             } break;
                         
             case KeyEvent.VK_7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D7);
-                input.nextKeyboardState.keyStates.put(Keys.D7, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D7);
+                nextKeyboardState.keyStates.put(Keys.D7, KeyState.KEY_DOWN);
             } break;
                                 
             case KeyEvent.VK_8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D8);
-                input.nextKeyboardState.keyStates.put(Keys.D8, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D8);
+                nextKeyboardState.keyStates.put(Keys.D8, KeyState.KEY_DOWN);
             } break;
                                         
             case KeyEvent.VK_9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D9);
-                input.nextKeyboardState.keyStates.put(Keys.D9, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.D9);
+                nextKeyboardState.keyStates.put(Keys.D9, KeyState.KEY_DOWN);
             } break;
                                                 
             case KeyEvent.VK_DELETE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Delete);
-                input.nextKeyboardState.keyStates.put(Keys.Delete, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Delete);
+                nextKeyboardState.keyStates.put(Keys.Delete, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_DIVIDE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Divide);
-                input.nextKeyboardState.keyStates.put(Keys.Divide, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Divide);
+                nextKeyboardState.keyStates.put(Keys.Divide, KeyState.KEY_DOWN);
             } break;
                     
             case KeyEvent.VK_DOWN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Down);
-                input.nextKeyboardState.keyStates.put(Keys.Down, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Down);
+                nextKeyboardState.keyStates.put(Keys.Down, KeyState.KEY_DOWN);
             } break;
                         
             case KeyEvent.VK_E:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.E);
-                input.nextKeyboardState.keyStates.put(Keys.E, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.E);
+                nextKeyboardState.keyStates.put(Keys.E, KeyState.KEY_DOWN);
             } break;
                             
             case KeyEvent.VK_END:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.End);
-                input.nextKeyboardState.keyStates.put(Keys.End, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.End);
+                nextKeyboardState.keyStates.put(Keys.End, KeyState.KEY_DOWN);
             } break;
                                 
             case KeyEvent.VK_ENTER:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Enter);
-                input.nextKeyboardState.keyStates.put(Keys.Enter, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Enter);
+                nextKeyboardState.keyStates.put(Keys.Enter, KeyState.KEY_DOWN);
             } break;
                                     
             case KeyEvent.VK_ESCAPE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Escape);
-                input.nextKeyboardState.keyStates.put(Keys.Escape, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Escape);
+                nextKeyboardState.keyStates.put(Keys.Escape, KeyState.KEY_DOWN);
             } break;
                                         
             case KeyEvent.VK_F:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F);
-                input.nextKeyboardState.keyStates.put(Keys.F, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F);
+                nextKeyboardState.keyStates.put(Keys.F, KeyState.KEY_DOWN);
             } break;
             
             case KeyEvent.VK_F1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F1);
-                input.nextKeyboardState.keyStates.put(Keys.F1, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F1);
+                nextKeyboardState.keyStates.put(Keys.F1, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F2);
-                input.nextKeyboardState.keyStates.put(Keys.F2, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F2);
+                nextKeyboardState.keyStates.put(Keys.F2, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F3);
-                input.nextKeyboardState.keyStates.put(Keys.F3, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F3);
+                nextKeyboardState.keyStates.put(Keys.F3, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F4);
-                input.nextKeyboardState.keyStates.put(Keys.F4, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F4);
+                nextKeyboardState.keyStates.put(Keys.F4, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F5);
-                input.nextKeyboardState.keyStates.put(Keys.F5, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F5);
+                nextKeyboardState.keyStates.put(Keys.F5, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F6);
-                input.nextKeyboardState.keyStates.put(Keys.F6, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F6);
+                nextKeyboardState.keyStates.put(Keys.F6, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F7);
-                input.nextKeyboardState.keyStates.put(Keys.F7, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F7);
+                nextKeyboardState.keyStates.put(Keys.F7, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F8);
-                input.nextKeyboardState.keyStates.put(Keys.F8, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F8);
+                nextKeyboardState.keyStates.put(Keys.F8, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F9);
-                input.nextKeyboardState.keyStates.put(Keys.F9, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F9);
+                nextKeyboardState.keyStates.put(Keys.F9, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F10:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F10);
-                input.nextKeyboardState.keyStates.put(Keys.F10, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F10);
+                nextKeyboardState.keyStates.put(Keys.F10, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F11:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F11);
-                input.nextKeyboardState.keyStates.put(Keys.F11, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F11);
+                nextKeyboardState.keyStates.put(Keys.F11, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_F12:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_G:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_H:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_HOME:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_I:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.I);
-                input.nextKeyboardState.keyStates.put(Keys.I, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.I);
+                nextKeyboardState.keyStates.put(Keys.I, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_INSERT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Insert);
-                input.nextKeyboardState.keyStates.put(Keys.Insert, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Insert);
+                nextKeyboardState.keyStates.put(Keys.Insert, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_J:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.J);
-                input.nextKeyboardState.keyStates.put(Keys.J, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.J);
+                nextKeyboardState.keyStates.put(Keys.J, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_K:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.K);
-                input.nextKeyboardState.keyStates.put(Keys.K, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.K);
+                nextKeyboardState.keyStates.put(Keys.K, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_L:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.L);
-                input.nextKeyboardState.keyStates.put(Keys.L, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.L);
+                nextKeyboardState.keyStates.put(Keys.L, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_LEFT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Left);
-                input.nextKeyboardState.keyStates.put(Keys.Left, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Left);
+                nextKeyboardState.keyStates.put(Keys.Left, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_ALT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.LeftAlt);
-                input.nextKeyboardState.keyStates.put(Keys.LeftAlt, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.LeftAlt);
+                nextKeyboardState.keyStates.put(Keys.LeftAlt, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_CONTROL:
             {
                 if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.LeftControl);
-                    input.nextKeyboardState.keyStates.put(Keys.LeftControl, KeyState.KEY_DOWN);
+                    nextKeyboardState.keyStates.remove(Keys.LeftControl);
+                    nextKeyboardState.keyStates.put(Keys.LeftControl, KeyState.KEY_DOWN);
                 }
                 else if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.RightControl);
-                    input.nextKeyboardState.keyStates.put(Keys.RightControl, KeyState.KEY_DOWN);
+                    nextKeyboardState.keyStates.remove(Keys.RightControl);
+                    nextKeyboardState.keyStates.put(Keys.RightControl, KeyState.KEY_DOWN);
                 }
             } break;
                 
@@ -520,230 +525,230 @@ implements KeyListener, MouseListener, MouseMotionListener
             {
                 if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.LeftShift);
-                    input.nextKeyboardState.keyStates.put(Keys.LeftShift, KeyState.KEY_DOWN);
+                    nextKeyboardState.keyStates.remove(Keys.LeftShift);
+                    nextKeyboardState.keyStates.put(Keys.LeftShift, KeyState.KEY_DOWN);
                 }
                 else if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.RightShift);
-                    input.nextKeyboardState.keyStates.put(Keys.RightShift, KeyState.KEY_DOWN);
+                    nextKeyboardState.keyStates.remove(Keys.RightShift);
+                    nextKeyboardState.keyStates.put(Keys.RightShift, KeyState.KEY_DOWN);
                 }
             } break;
                 
             case KeyEvent.VK_M:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.M);
-                input.nextKeyboardState.keyStates.put(Keys.M, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.M);
+                nextKeyboardState.keyStates.put(Keys.M, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_MULTIPLY:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Multiply);
-                input.nextKeyboardState.keyStates.put(Keys.Multiply, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Multiply);
+                nextKeyboardState.keyStates.put(Keys.Multiply, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_N:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.N);
-                input.nextKeyboardState.keyStates.put(Keys.N, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.N);
+                nextKeyboardState.keyStates.put(Keys.N, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUM_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumLock);
-                input.nextKeyboardState.keyStates.put(Keys.NumLock, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumLock);
+                nextKeyboardState.keyStates.put(Keys.NumLock, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD0:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad0);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad0, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad0);
+                nextKeyboardState.keyStates.put(Keys.NumPad0, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad1);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad1, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad1);
+                nextKeyboardState.keyStates.put(Keys.NumPad1, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad2);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad2, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad2);
+                nextKeyboardState.keyStates.put(Keys.NumPad2, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad3);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad3, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad3);
+                nextKeyboardState.keyStates.put(Keys.NumPad3, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad4);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad4, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad4);
+                nextKeyboardState.keyStates.put(Keys.NumPad4, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad5);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad5, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad5);
+                nextKeyboardState.keyStates.put(Keys.NumPad5, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad6);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad6, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad6);
+                nextKeyboardState.keyStates.put(Keys.NumPad6, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad7);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad7, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad7);
+                nextKeyboardState.keyStates.put(Keys.NumPad7, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad8);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad8, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad8);
+                nextKeyboardState.keyStates.put(Keys.NumPad8, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_NUMPAD9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad9);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad9, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.NumPad9);
+                nextKeyboardState.keyStates.put(Keys.NumPad9, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_O:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.O);
-                input.nextKeyboardState.keyStates.put(Keys.O, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.O);
+                nextKeyboardState.keyStates.put(Keys.O, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_P:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.P);
-                input.nextKeyboardState.keyStates.put(Keys.P, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.P);
+                nextKeyboardState.keyStates.put(Keys.P, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_PAGE_DOWN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PageDown);
-                input.nextKeyboardState.keyStates.put(Keys.PageDown, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.PageDown);
+                nextKeyboardState.keyStates.put(Keys.PageDown, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_PAGE_UP:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PageUp);
-                input.nextKeyboardState.keyStates.put(Keys.PageUp, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.PageUp);
+                nextKeyboardState.keyStates.put(Keys.PageUp, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_PAUSE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Pause);
-                input.nextKeyboardState.keyStates.put(Keys.Pause, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Pause);
+                nextKeyboardState.keyStates.put(Keys.Pause, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_PRINTSCREEN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PrintScreen);
-                input.nextKeyboardState.keyStates.put(Keys.PrintScreen, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.PrintScreen);
+                nextKeyboardState.keyStates.put(Keys.PrintScreen, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_Q:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Q);
-                input.nextKeyboardState.keyStates.put(Keys.Q, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Q);
+                nextKeyboardState.keyStates.put(Keys.Q, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_R:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.R);
-                input.nextKeyboardState.keyStates.put(Keys.R, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.R);
+                nextKeyboardState.keyStates.put(Keys.R, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_RIGHT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Right);
-                input.nextKeyboardState.keyStates.put(Keys.Right, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Right);
+                nextKeyboardState.keyStates.put(Keys.Right, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_S:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.S);
-                input.nextKeyboardState.keyStates.put(Keys.S, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.S);
+                nextKeyboardState.keyStates.put(Keys.S, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_SCROLL_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Scroll);
-                input.nextKeyboardState.keyStates.put(Keys.Scroll, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Scroll);
+                nextKeyboardState.keyStates.put(Keys.Scroll, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_SPACE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Space);
-                input.nextKeyboardState.keyStates.put(Keys.Space, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Space);
+                nextKeyboardState.keyStates.put(Keys.Space, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_SUBTRACT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Subtract);
-                input.nextKeyboardState.keyStates.put(Keys.Subtract, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Subtract);
+                nextKeyboardState.keyStates.put(Keys.Subtract, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_T:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.T);
-                input.nextKeyboardState.keyStates.put(Keys.T, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.T);
+                nextKeyboardState.keyStates.put(Keys.T, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_TAB:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Tab);
-                input.nextKeyboardState.keyStates.put(Keys.Tab, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Tab);
+                nextKeyboardState.keyStates.put(Keys.Tab, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_U:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.U);
-                input.nextKeyboardState.keyStates.put(Keys.U, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.U);
+                nextKeyboardState.keyStates.put(Keys.U, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_UP:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Up);
-                input.nextKeyboardState.keyStates.put(Keys.Up, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Up);
+                nextKeyboardState.keyStates.put(Keys.Up, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_V:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.V);
-                input.nextKeyboardState.keyStates.put(Keys.V, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.V);
+                nextKeyboardState.keyStates.put(Keys.V, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_W:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.W);
-                input.nextKeyboardState.keyStates.put(Keys.W, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.W);
+                nextKeyboardState.keyStates.put(Keys.W, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_X:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.X);
-                input.nextKeyboardState.keyStates.put(Keys.X, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.X);
+                nextKeyboardState.keyStates.put(Keys.X, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_Y:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Y);
-                input.nextKeyboardState.keyStates.put(Keys.Y, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Y);
+                nextKeyboardState.keyStates.put(Keys.Y, KeyState.KEY_DOWN);
             } break;
                 
             case KeyEvent.VK_Z:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Z);
-                input.nextKeyboardState.keyStates.put(Keys.Z, KeyState.KEY_DOWN);
+                nextKeyboardState.keyStates.remove(Keys.Z);
+                nextKeyboardState.keyStates.put(Keys.Z, KeyState.KEY_DOWN);
             } break;
                 
             default:
@@ -759,297 +764,297 @@ implements KeyListener, MouseListener, MouseMotionListener
         {
             case KeyEvent.VK_A:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.A);
-                input.nextKeyboardState.keyStates.put(Keys.A, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.A);
+                nextKeyboardState.keyStates.put(Keys.A, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_ADD:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Add);
-                input.nextKeyboardState.keyStates.put(Keys.Add, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Add);
+                nextKeyboardState.keyStates.put(Keys.Add, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_B:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.B);
-                input.nextKeyboardState.keyStates.put(Keys.B, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.B);
+                nextKeyboardState.keyStates.put(Keys.B, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_BACK_SPACE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Back);
-                input.nextKeyboardState.keyStates.put(Keys.Back, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Back);
+                nextKeyboardState.keyStates.put(Keys.Back, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_C:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.C);
-                input.nextKeyboardState.keyStates.put(Keys.C, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.C);
+                nextKeyboardState.keyStates.put(Keys.C, KeyState.KEY_UP);
             } break;
             
             case KeyEvent.VK_CAPS_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.CapsLock);
-                input.nextKeyboardState.keyStates.put(Keys.CapsLock, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.CapsLock);
+                nextKeyboardState.keyStates.put(Keys.CapsLock, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_D:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D);
-                input.nextKeyboardState.keyStates.put(Keys.D, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D);
+                nextKeyboardState.keyStates.put(Keys.D, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_0:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D0);
-                input.nextKeyboardState.keyStates.put(Keys.D0, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D0);
+                nextKeyboardState.keyStates.put(Keys.D0, KeyState.KEY_UP);
             } break;
                     
             case KeyEvent.VK_1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D1);
-                input.nextKeyboardState.keyStates.put(Keys.D1, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D1);
+                nextKeyboardState.keyStates.put(Keys.D1, KeyState.KEY_UP);
             } break;
                         
             case KeyEvent.VK_2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D2);
-                input.nextKeyboardState.keyStates.put(Keys.D2, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D2);
+                nextKeyboardState.keyStates.put(Keys.D2, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D3);
-                input.nextKeyboardState.keyStates.put(Keys.D3, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D3);
+                nextKeyboardState.keyStates.put(Keys.D3, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D4);
-                input.nextKeyboardState.keyStates.put(Keys.D4, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D4);
+                nextKeyboardState.keyStates.put(Keys.D4, KeyState.KEY_UP);
             } break;
             
             case KeyEvent.VK_5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D5);
-                input.nextKeyboardState.keyStates.put(Keys.D5, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D5);
+                nextKeyboardState.keyStates.put(Keys.D5, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D6);
-                input.nextKeyboardState.keyStates.put(Keys.D6, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D6);
+                nextKeyboardState.keyStates.put(Keys.D6, KeyState.KEY_UP);
             } break;
                         
             case KeyEvent.VK_7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D7);
-                input.nextKeyboardState.keyStates.put(Keys.D7, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D7);
+                nextKeyboardState.keyStates.put(Keys.D7, KeyState.KEY_UP);
             } break;
                                 
             case KeyEvent.VK_8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D8);
-                input.nextKeyboardState.keyStates.put(Keys.D8, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D8);
+                nextKeyboardState.keyStates.put(Keys.D8, KeyState.KEY_UP);
             } break;
                                         
             case KeyEvent.VK_9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.D9);
-                input.nextKeyboardState.keyStates.put(Keys.D9, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.D9);
+                nextKeyboardState.keyStates.put(Keys.D9, KeyState.KEY_UP);
             } break;
                                                 
             case KeyEvent.VK_DELETE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Delete);
-                input.nextKeyboardState.keyStates.put(Keys.Delete, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Delete);
+                nextKeyboardState.keyStates.put(Keys.Delete, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_DIVIDE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Divide);
-                input.nextKeyboardState.keyStates.put(Keys.Divide, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Divide);
+                nextKeyboardState.keyStates.put(Keys.Divide, KeyState.KEY_UP);
             } break;
                     
             case KeyEvent.VK_DOWN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Down);
-                input.nextKeyboardState.keyStates.put(Keys.Down, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Down);
+                nextKeyboardState.keyStates.put(Keys.Down, KeyState.KEY_UP);
             } break;
                         
             case KeyEvent.VK_E:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.E);
-                input.nextKeyboardState.keyStates.put(Keys.E, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.E);
+                nextKeyboardState.keyStates.put(Keys.E, KeyState.KEY_UP);
             } break;
                             
             case KeyEvent.VK_END:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.End);
-                input.nextKeyboardState.keyStates.put(Keys.End, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.End);
+                nextKeyboardState.keyStates.put(Keys.End, KeyState.KEY_UP);
             } break;
                                 
             case KeyEvent.VK_ENTER:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Enter);
-                input.nextKeyboardState.keyStates.put(Keys.Enter, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Enter);
+                nextKeyboardState.keyStates.put(Keys.Enter, KeyState.KEY_UP);
             } break;
                                     
             case KeyEvent.VK_ESCAPE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Escape);
-                input.nextKeyboardState.keyStates.put(Keys.Escape, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Escape);
+                nextKeyboardState.keyStates.put(Keys.Escape, KeyState.KEY_UP);
             } break;
                                         
             case KeyEvent.VK_F:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F);
-                input.nextKeyboardState.keyStates.put(Keys.F, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F);
+                nextKeyboardState.keyStates.put(Keys.F, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F1);
-                input.nextKeyboardState.keyStates.put(Keys.F1, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F1);
+                nextKeyboardState.keyStates.put(Keys.F1, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F2);
-                input.nextKeyboardState.keyStates.put(Keys.F2, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F2);
+                nextKeyboardState.keyStates.put(Keys.F2, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F3);
-                input.nextKeyboardState.keyStates.put(Keys.F3, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F3);
+                nextKeyboardState.keyStates.put(Keys.F3, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F4);
-                input.nextKeyboardState.keyStates.put(Keys.F4, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F4);
+                nextKeyboardState.keyStates.put(Keys.F4, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F5);
-                input.nextKeyboardState.keyStates.put(Keys.F5, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F5);
+                nextKeyboardState.keyStates.put(Keys.F5, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F6);
-                input.nextKeyboardState.keyStates.put(Keys.F6, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F6);
+                nextKeyboardState.keyStates.put(Keys.F6, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F7);
-                input.nextKeyboardState.keyStates.put(Keys.F7, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F7);
+                nextKeyboardState.keyStates.put(Keys.F7, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F8);
-                input.nextKeyboardState.keyStates.put(Keys.F8, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F8);
+                nextKeyboardState.keyStates.put(Keys.F8, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F9);
-                input.nextKeyboardState.keyStates.put(Keys.F9, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F9);
+                nextKeyboardState.keyStates.put(Keys.F9, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F10:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F10);
-                input.nextKeyboardState.keyStates.put(Keys.F10, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F10);
+                nextKeyboardState.keyStates.put(Keys.F10, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F11:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F11);
-                input.nextKeyboardState.keyStates.put(Keys.F11, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F11);
+                nextKeyboardState.keyStates.put(Keys.F11, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_F12:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_G:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_H:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_HOME:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.F12);
-                input.nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.F12);
+                nextKeyboardState.keyStates.put(Keys.F12, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_I:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.I);
-                input.nextKeyboardState.keyStates.put(Keys.I, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.I);
+                nextKeyboardState.keyStates.put(Keys.I, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_INSERT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Insert);
-                input.nextKeyboardState.keyStates.put(Keys.Insert, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Insert);
+                nextKeyboardState.keyStates.put(Keys.Insert, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_J:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.J);
-                input.nextKeyboardState.keyStates.put(Keys.J, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.J);
+                nextKeyboardState.keyStates.put(Keys.J, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_K:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.K);
-                input.nextKeyboardState.keyStates.put(Keys.K, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.K);
+                nextKeyboardState.keyStates.put(Keys.K, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_L:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.L);
-                input.nextKeyboardState.keyStates.put(Keys.L, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.L);
+                nextKeyboardState.keyStates.put(Keys.L, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_LEFT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Left);
-                input.nextKeyboardState.keyStates.put(Keys.Left, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Left);
+                nextKeyboardState.keyStates.put(Keys.Left, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_ALT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.LeftAlt);
-                input.nextKeyboardState.keyStates.put(Keys.LeftAlt, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.LeftAlt);
+                nextKeyboardState.keyStates.put(Keys.LeftAlt, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_CONTROL:
             {
                 if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.LeftControl);
-                    input.nextKeyboardState.keyStates.put(Keys.LeftControl, KeyState.KEY_UP);
+                    nextKeyboardState.keyStates.remove(Keys.LeftControl);
+                    nextKeyboardState.keyStates.put(Keys.LeftControl, KeyState.KEY_UP);
                 }
                 else if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.RightControl);
-                    input.nextKeyboardState.keyStates.put(Keys.RightControl, KeyState.KEY_UP);
+                    nextKeyboardState.keyStates.remove(Keys.RightControl);
+                    nextKeyboardState.keyStates.put(Keys.RightControl, KeyState.KEY_UP);
                 }
             } break;
                 
@@ -1057,230 +1062,230 @@ implements KeyListener, MouseListener, MouseMotionListener
             {
                 if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.LeftShift);
-                    input.nextKeyboardState.keyStates.put(Keys.LeftShift, KeyState.KEY_UP);
+                    nextKeyboardState.keyStates.remove(Keys.LeftShift);
+                    nextKeyboardState.keyStates.put(Keys.LeftShift, KeyState.KEY_UP);
                 }
                 else if (event.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT)
                 {
-                    input.nextKeyboardState.keyStates.remove(Keys.RightShift);
-                    input.nextKeyboardState.keyStates.put(Keys.RightShift, KeyState.KEY_UP);
+                    nextKeyboardState.keyStates.remove(Keys.RightShift);
+                    nextKeyboardState.keyStates.put(Keys.RightShift, KeyState.KEY_UP);
                 }
             } break;
                 
             case KeyEvent.VK_M:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.M);
-                input.nextKeyboardState.keyStates.put(Keys.M, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.M);
+                nextKeyboardState.keyStates.put(Keys.M, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_MULTIPLY:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Multiply);
-                input.nextKeyboardState.keyStates.put(Keys.Multiply, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Multiply);
+                nextKeyboardState.keyStates.put(Keys.Multiply, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_N:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.N);
-                input.nextKeyboardState.keyStates.put(Keys.N, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.N);
+                nextKeyboardState.keyStates.put(Keys.N, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUM_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumLock);
-                input.nextKeyboardState.keyStates.put(Keys.NumLock, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumLock);
+                nextKeyboardState.keyStates.put(Keys.NumLock, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD0:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad0);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad0, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad0);
+                nextKeyboardState.keyStates.put(Keys.NumPad0, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD1:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad1);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad1, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad1);
+                nextKeyboardState.keyStates.put(Keys.NumPad1, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD2:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad2);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad2, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad2);
+                nextKeyboardState.keyStates.put(Keys.NumPad2, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD3:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad3);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad3, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad3);
+                nextKeyboardState.keyStates.put(Keys.NumPad3, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD4:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad4);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad4, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad4);
+                nextKeyboardState.keyStates.put(Keys.NumPad4, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD5:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad5);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad5, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad5);
+                nextKeyboardState.keyStates.put(Keys.NumPad5, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD6:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad6);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad6, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad6);
+                nextKeyboardState.keyStates.put(Keys.NumPad6, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD7:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad7);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad7, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad7);
+                nextKeyboardState.keyStates.put(Keys.NumPad7, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD8:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad8);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad8, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad8);
+                nextKeyboardState.keyStates.put(Keys.NumPad8, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_NUMPAD9:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.NumPad9);
-                input.nextKeyboardState.keyStates.put(Keys.NumPad9, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.NumPad9);
+                nextKeyboardState.keyStates.put(Keys.NumPad9, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_O:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.O);
-                input.nextKeyboardState.keyStates.put(Keys.O, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.O);
+                nextKeyboardState.keyStates.put(Keys.O, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_P:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.P);
-                input.nextKeyboardState.keyStates.put(Keys.P, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.P);
+                nextKeyboardState.keyStates.put(Keys.P, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_PAGE_DOWN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PageDown);
-                input.nextKeyboardState.keyStates.put(Keys.PageDown, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.PageDown);
+                nextKeyboardState.keyStates.put(Keys.PageDown, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_PAGE_UP:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PageUp);
-                input.nextKeyboardState.keyStates.put(Keys.PageUp, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.PageUp);
+                nextKeyboardState.keyStates.put(Keys.PageUp, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_PAUSE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Pause);
-                input.nextKeyboardState.keyStates.put(Keys.Pause, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Pause);
+                nextKeyboardState.keyStates.put(Keys.Pause, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_PRINTSCREEN:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.PrintScreen);
-                input.nextKeyboardState.keyStates.put(Keys.PrintScreen, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.PrintScreen);
+                nextKeyboardState.keyStates.put(Keys.PrintScreen, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_Q:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Q);
-                input.nextKeyboardState.keyStates.put(Keys.Q, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Q);
+                nextKeyboardState.keyStates.put(Keys.Q, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_R:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.R);
-                input.nextKeyboardState.keyStates.put(Keys.R, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.R);
+                nextKeyboardState.keyStates.put(Keys.R, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_RIGHT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Right);
-                input.nextKeyboardState.keyStates.put(Keys.Right, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Right);
+                nextKeyboardState.keyStates.put(Keys.Right, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_S:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.S);
-                input.nextKeyboardState.keyStates.put(Keys.S, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.S);
+                nextKeyboardState.keyStates.put(Keys.S, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_SCROLL_LOCK:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Scroll);
-                input.nextKeyboardState.keyStates.put(Keys.Scroll, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Scroll);
+                nextKeyboardState.keyStates.put(Keys.Scroll, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_SPACE:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Space);
-                input.nextKeyboardState.keyStates.put(Keys.Space, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Space);
+                nextKeyboardState.keyStates.put(Keys.Space, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_SUBTRACT:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Subtract);
-                input.nextKeyboardState.keyStates.put(Keys.Subtract, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Subtract);
+                nextKeyboardState.keyStates.put(Keys.Subtract, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_T:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.T);
-                input.nextKeyboardState.keyStates.put(Keys.T, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.T);
+                nextKeyboardState.keyStates.put(Keys.T, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_TAB:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Tab);
-                input.nextKeyboardState.keyStates.put(Keys.Tab, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Tab);
+                nextKeyboardState.keyStates.put(Keys.Tab, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_U:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.U);
-                input.nextKeyboardState.keyStates.put(Keys.U, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.U);
+                nextKeyboardState.keyStates.put(Keys.U, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_UP:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Up);
-                input.nextKeyboardState.keyStates.put(Keys.Up, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Up);
+                nextKeyboardState.keyStates.put(Keys.Up, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_V:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.V);
-                input.nextKeyboardState.keyStates.put(Keys.V, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.V);
+                nextKeyboardState.keyStates.put(Keys.V, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_W:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.W);
-                input.nextKeyboardState.keyStates.put(Keys.W, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.W);
+                nextKeyboardState.keyStates.put(Keys.W, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_X:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.X);
-                input.nextKeyboardState.keyStates.put(Keys.X, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.X);
+                nextKeyboardState.keyStates.put(Keys.X, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_Y:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Y);
-                input.nextKeyboardState.keyStates.put(Keys.Y, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Y);
+                nextKeyboardState.keyStates.put(Keys.Y, KeyState.KEY_UP);
             } break;
                 
             case KeyEvent.VK_Z:
             {
-                input.nextKeyboardState.keyStates.remove(Keys.Z);
-                input.nextKeyboardState.keyStates.put(Keys.Z, KeyState.KEY_UP);
+                nextKeyboardState.keyStates.remove(Keys.Z);
+                nextKeyboardState.keyStates.put(Keys.Z, KeyState.KEY_UP);
             } break;
                 
             default:

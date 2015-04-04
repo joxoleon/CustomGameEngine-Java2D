@@ -1,14 +1,11 @@
 package engine.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -24,6 +21,10 @@ import engine.input.Keys;
 public class GameWrapper
 extends JPanel
 {
+	
+	// Fields.
+	private static final long serialVersionUID = 1L;
+
 	private JFrame frame;
 	
 	private GameLoopThread updateThread;
@@ -40,11 +41,15 @@ extends JPanel
 	
 	Dimension panelDimension = new Dimension(1, 1);
 	
+	// Constructors.
 	public 
 	GameWrapper()
 	{
-		updateThread = new UpdateThread(this, 120);
+		updateThread = new UpdateThread(this, 60);
 		renderThread = new RenderThread(this, 60);
+		
+		RenderStateManager.updateThreadID = updateThread.getId();
+		RenderStateManager.renderThreadID = renderThread.getId();
 		
 		frame = new JFrame("GameWrapper");
 		
@@ -54,6 +59,16 @@ extends JPanel
 			{
 				updateThread.interrupt();
 				renderThread.interrupt();
+				
+				try
+				{
+					updateThread.join();
+					renderThread.join();
+				} catch (InterruptedException e1)
+				{
+					e1.printStackTrace();
+				}
+
 				
 				System.exit(0);
 			}
@@ -76,6 +91,7 @@ extends JPanel
 		this.requestFocusInWindow();
 		
 		initializeWindow();
+		RenderStateManager.initializeStates();
 		initializeKeyboardInput();
 		initializeMouseInput();
 		
@@ -85,23 +101,26 @@ extends JPanel
 		}
 	}
 	
+	// Methods.
 	public void 
 	update(GameTime gameTime)
 	{
-//		System.out.println("UPDATE LOGIC");
-		Input.Instance().SwitchStates();
+		RenderStateManager.startUpdatingState();
+		
+		
+		Input.SwitchStates();
 		
 		if (Input.isButtonPressed(Buttons.LeftButton))
 		{
-			System.out.println("LEFT BUTTON");
 		}
-		
-		System.out.println(Input.getMouseMove());
 		
 		if (Input.isKeyPressed(Keys.Escape))
 		{
 			exit();
 		}
+		
+		
+		RenderStateManager.finishUpdatingState();
 	}
 	
 	public void 
@@ -132,7 +151,10 @@ extends JPanel
 	public void 
 	render(Graphics2D g2d)
 	{
-//		System.out.println("RENDER LOGIC");
+		RenderStateManager.startRenderState();
+
+		
+		RenderStateManager.finishRenderState();
 		
 	}
 	
@@ -149,6 +171,7 @@ extends JPanel
 		updateThread.exitThread();
 		renderThread.exitThread();
 		
+		System.out.println("escape");
 		System.exit(0);
 	}
 	

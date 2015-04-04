@@ -1,6 +1,6 @@
 package engine.components;
 
-import engine.core.GameObject;
+import engine.core.Actor;
 import engine.datastructures.Pool;
 
 public class TransformManager
@@ -20,10 +20,11 @@ public class TransformManager
 	}
 	
 	public TransformComponent
-	instantiate(GameObject parent, boolean isRendering)
+	instantiate(Actor parent)
 	{
 		TransformComponent component = transformPool.allocate();
-		component.initialize(parent, isRendering);
+		component.initialize(parent);
+		
 		
 		return component;
 	}

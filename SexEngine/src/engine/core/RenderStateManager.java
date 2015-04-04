@@ -12,6 +12,10 @@ RenderStateManager
 	private static int updating = 0;
 	private static int rendering = 0;
 	
+	static long updateThreadID;
+	static long renderThreadID;
+	
+	
 	//Constructors
 	private
 	RenderStateManager()
@@ -25,11 +29,7 @@ RenderStateManager
 	{
 		states.addLast(0);
 		states.addLast(1);
-		states.addLast(2);
-		
-		updating = states.removeLast();
-		mostRecentlyUpdated = states.removeFirst();
-		
+		states.addLast(2);		
 	}
 	
 	
@@ -66,7 +66,7 @@ RenderStateManager
 		rendering = -1;
 	}
 	
-	public synchronized void
+	public synchronized static void
 	startUpdatingState()
 	{
 		updating = states.removeLast();
@@ -78,6 +78,18 @@ RenderStateManager
 		states.addFirst(updating);
 		mostRecentlyUpdated = updating;
 		updating = -1;
+	}
+	
+	public static long 
+	getUpdateThreadID()
+	{
+		return updateThreadID;
+	}
+	
+	public static long 
+	getRenderThreadID()
+	{
+		return renderThreadID;
 	}
 	
 	

@@ -59,6 +59,15 @@ public class Vector3 {
         return this;
     }
     
+    public Vector3 mul(Vector3 v)
+    {
+    	x *= v.x;
+    	y *= v.y;
+    	z *= v.z;
+    	
+    	return this;
+    }
+    
     public Vector3 div(float f)
     {
         if (f != 0)

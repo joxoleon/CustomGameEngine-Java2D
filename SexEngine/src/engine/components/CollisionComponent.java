@@ -14,4 +14,20 @@ extends GameComponent
 		return null;
 	}
 
+	@Override
+	protected void 
+	setEnabled(boolean enabled)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void 
+	destroyComponent()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

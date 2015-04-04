@@ -26,16 +26,37 @@ public abstract class GameComponent
 		return parent;
 	}
 	
-	public void enable()
+	public void 
+	enable()
 	{
-		isEnabled = true;
+		if (isEnabled == false)
+		{
+			isEnabled = true;
+			setEnabled(true);
+		}
 	}
 	
-	public void disable()
+	public void 
+	disable()
 	{
-		isEnabled = false;
+		if (isEnabled == true)
+		{
+			isEnabled = false;
+			setEnabled(false);
+		}
 	}
 	
-	
+	protected abstract void 
+	setEnabled(boolean enabled);
 
+	public void
+	destroy()
+	{
+		destroyComponent();
+		parent = null;
+	}
+	
+	protected abstract void 
+	destroyComponent();
+	
 }
