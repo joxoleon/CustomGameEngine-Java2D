@@ -25,3 +25,12 @@ sve komponente objekta i dalje tu.
 
 Render manager kada dodje do sledeceg iscrtavanja iv idi da je isdestroyed true vadi iz liste i postavlja last render na true.
 God kad vidid a je destruct count na 0 i da je lastrender true, brise objekat i vraca sve komponente i game object u njihove poolove ili ih brise.
+
+
+
+04.04.
+Danas smo produbili logiku unistavanja Actora i reorganizovali GameObject, Actora kao i ComponentManager-e.
+Transform smo za sada zavrsili i implementirali da radi sa renderState-ovima.
+Zapoceli smo implementaciju RenderManager-a, RenderComponente i boga gde ce se vrsiti unistavanje objekata.
+Kada to zavrsimo, potrebno je da napravimo Sprite klasu i osposobimo iscrtavanje kako bismo testirali kako funkcionise multithreaded game loop.
+Toeto.
