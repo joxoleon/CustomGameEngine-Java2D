@@ -5,12 +5,12 @@ import engine.datastructures.Pool;
 
 public class TransformManager
 {
-	Pool<TransformComponent> transformPool = null;
+	Pool<TransformComponent> transformComponentPool = null;
 	
 	public
 	TransformManager(int poolInitialSize, int poolMinSize, int poolMinSizeThreshold, int poolMaxSize, int poolMaxSizeThreshold)
 	{
-		transformPool = new Pool<TransformComponent>(
+		transformComponentPool = new Pool<TransformComponent>(
 			TransformComponent.class,
 			poolInitialSize,
 			poolMinSize,
@@ -22,7 +22,7 @@ public class TransformManager
 	public TransformComponent
 	instantiate(Actor parent)
 	{
-		TransformComponent component = transformPool.allocate();
+		TransformComponent component = transformComponentPool.allocate();
 		component.initialize(parent);
 		
 		
@@ -32,13 +32,13 @@ public class TransformManager
 	public void
 	destroy(TransformComponent component)
 	{
-		transformPool.deallocate(component);
+		transformComponentPool.deallocate(component);
 	}
 	
 	public void
 	update()
 	{
-		transformPool.update();
+		transformComponentPool.update();
 	}
 	
 }

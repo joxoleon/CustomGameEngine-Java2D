@@ -3,6 +3,7 @@ import engine.core.Actor;
 import engine.core.IMultiRenderState;
 import engine.core.RenderStateManager;
 import engine.datastructures.Vector3;
+import engine.god.God;
 import engine.utility.MathHelper;
 
 
@@ -58,7 +59,7 @@ implements IMultiRenderState
 	protected void 
 	destroyComponent()
 	{
-		
+		God.TransformManager.destroy(this);
 	}
 	
 	public final String 

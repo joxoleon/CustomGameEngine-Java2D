@@ -46,6 +46,12 @@ public abstract class GameComponent
 		}
 	}
 	
+	public boolean 
+	isEnabled()
+	{
+		return isEnabled;
+	}
+	
 	protected abstract void 
 	setEnabled(boolean enabled);
 
@@ -58,5 +64,5 @@ public abstract class GameComponent
 	
 	protected abstract void 
 	destroyComponent();
-	
+
 }

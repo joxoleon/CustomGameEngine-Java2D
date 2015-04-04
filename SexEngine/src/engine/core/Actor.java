@@ -3,6 +3,7 @@ package engine.core;
 import java.util.HashMap;
 
 import engine.components.GameComponent;
+import engine.components.RenderingComponent;
 import engine.components.TransformComponent;
 import engine.god.God;
 
@@ -11,9 +12,13 @@ import engine.god.God;
 public class Actor extends GameObject
 {
 	//Fields
-	private TransformComponent transform;
-	
+	private boolean isDestroyed = false;
+
+	protected TransformComponent transform;	
+	protected RenderingComponent renderingComponent;
+
 	private HashMap<String, GameComponent> components = new HashMap<String, GameComponent>();
+	
 	
 	
 	//Constructors
@@ -22,10 +27,19 @@ public class Actor extends GameObject
 	{
 		this.transform = God.TransformManager.instantiate(this);
 		this.addComponent(transform);
+		
+		// Dodavanje rendering componente. Imaj u vidu da bi mogao da prosledis Sprite ili neka slicna sranja pa da se to ovde inicijalizuje.
 	}
 	
 	
 	//Methods
+	public void 
+	destroy()
+	{
+		isDestroyed = true;
+	}
+
+	
 	public void 
 	addComponent(GameComponent component)
 	{
