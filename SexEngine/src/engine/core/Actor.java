@@ -1,11 +1,11 @@
 package engine.core;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import engine.components.GameComponent;
 import engine.components.RenderingComponent;
 import engine.components.TransformComponent;
-import engine.god.God;
 
 
 
@@ -14,10 +14,11 @@ public class Actor extends GameObject
 	//Fields
 	private boolean isDestroyed = false;
 
-	protected TransformComponent transform;	
+	protected TransformComponent transform;
 	protected RenderingComponent renderingComponent;
 
-	private HashMap<String, GameComponent> components = new HashMap<String, GameComponent>();
+	//private HashMap<String, GameComponent> components = new HashMap<String, GameComponent>();
+	LinkedList<GameComponent> components = new LinkedList<GameComponent>();
 	
 	
 	
@@ -36,29 +37,83 @@ public class Actor extends GameObject
 	public void 
 	destroy()
 	{
-		isDestroyed = true;
+		if (isDestroyed == false)
+		{
+			isDestroyed = true;
+			for(GameComponent component : components)
+				component.disable();
+			
+			//Pozvadi God.destroy(this, vreme);
+		}
+	}
+	
+	void finalDestroy()
+	{
+		for(GameComponent component : components)
+		{
+			component.destroy();
+		}
+		components.clear();
 	}
 
 	
 	public void 
 	addComponent(GameComponent component)
 	{
-		if(components.get(component.getName()) != null)
+		if(getComponent(component.getName()) != null)
 			removeComponent(component.getName());
 			
-		components.put(component.getName(), component);
+		components.add(component);
 	}
 	
 	public GameComponent 
 	getComponent(String name)
 	{
-		return components.get(name);
+		for(GameComponent component : components)
+		{
+			if(component.getName().equals(name))
+				return component;
+		}
+		
+		return null;
+	}
+	
+	public GameComponent[]
+	getComponents()
+	{
+		GameComponent[] gameComponents = null;
+		components.toArray(gameComponents);
+		
+		return gameComponents;
 	}
 	
 	public GameComponent 
 	removeComponent(String name)
 	{
-		return components.remove(name);
+		GameComponent returnComponent = null;
+		for(GameComponent component : components)
+		{
+			if(component.getName().equals(name))
+			{
+				returnComponent = component;
+				components.remove(component);
+				return returnComponent;
+			}	
+		}
+		
+		return null;
+	}
+	
+	public TransformComponent
+	getTransformComponent()
+	{
+		return transform;
+	}
+	
+	public RenderingComponent
+	getRenderingComponent()
+	{
+		return renderingComponent;
 	}
 	
 }

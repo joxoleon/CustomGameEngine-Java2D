@@ -1,9 +1,9 @@
 package engine.components;
 import engine.core.Actor;
+import engine.core.God;
 import engine.core.IMultiRenderState;
 import engine.core.RenderStateManager;
 import engine.datastructures.Vector3;
-import engine.god.God;
 import engine.utility.MathHelper;
 
 

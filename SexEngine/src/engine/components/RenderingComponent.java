@@ -8,8 +8,8 @@ extends GameComponent
 	//Fields
 	private boolean isLastRender = false;
 	
-
 	
+	//Methods
 	void 
 	initialize(Actor parent)
 	{
@@ -44,5 +44,11 @@ extends GameComponent
 	setLastRender()
 	{
 		isLastRender = true;
+	}
+	
+	public final boolean
+	isLastRender()
+	{
+		return isLastRender;
 	}
 }
