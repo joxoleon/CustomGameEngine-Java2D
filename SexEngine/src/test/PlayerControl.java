@@ -6,6 +6,7 @@ import engine.core.GameTime;
 import engine.datastructures.Vector3;
 import engine.input.Input;
 import engine.input.Keys;
+import engine.utility.MathHelper;
 
 public class PlayerControl
 extends ScriptComponent
@@ -51,33 +52,39 @@ extends ScriptComponent
 			moveDistance.x += 1;
 		}
 		
-		System.out.println(moveDistance.x + " " + moveDistance.y);
-		
 		if (moveDistance.magnitude() > 0)
 		{
 			moveDistance.normalize();
 		}
 		
+		System.out.println("Pre rotacije " +moveDistance);
+		
+		moveDistance = moveDistance.rotate(MathHelper.PIOverFour);
+		
+		System.out.println("Posle rotacije" + moveDistance);
+		
 		moveDistance.mul(moveSpeed * gameTime.dt_s());
 		
-		float rotation = 0;
 		
-		if (Input.isKeyDown(Keys.Q))
-		{
-			rotation -= 0.1;
-		}
-		
-		if (Input.isKeyDown(Keys.E))
-		{
-			rotation += 0.1;
-		}
-		
-		parent.getTransformComponent().rotate(rotation);
-		
-		moveDistance = moveDistance.rotate((float)parent.getTransformComponent().getRotation());
-		parent.getTransformComponent().translate(moveDistance);
-		
-		System.out.println(moveDistance.x + " " + moveDistance.y);
+//		
+//		float rotation = 0;
+//		
+//		if (Input.isKeyDown(Keys.Q))
+//		{
+//			rotation -= 0.1;
+//		}
+//		
+//		if (Input.isKeyDown(Keys.E))
+//		{
+//			rotation += 0.1;
+//		}
+//		
+//		parent.getTransformComponent().rotate(rotation);
+//		
+//		moveDistance = moveDistance.rotate((float)parent.getTransformComponent().getRotation());
+//		parent.getTransformComponent().translate(moveDistance);
+//		
+//		System.out.println(moveDistance.x + " " + moveDistance.y);
 	}
 
 	@Override

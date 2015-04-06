@@ -123,8 +123,9 @@ public class Vector3 {
     	float sin = (float)Math.sin(angle);
     	float cos = (float)Math.cos(angle);
     	
+    	float tempx = result.x;
     	result.x = result.x * cos + result.y * sin;
-    	result.y = result.x * cos - result.y * sin;
+    	result.y = - tempx * sin + result.y * cos;
     	
     	return result;
     }
@@ -176,6 +177,11 @@ public class Vector3 {
                 (Math.pow(v2.x - v1.x, 2) +
                  Math.pow(v2.y - v1.y, 2) +
                  Math.pow(v2.z - v1.z, 2));
+    }
+    
+    public String toString()
+    {
+    	return "[" + x +", " + y +", " + z + "]";
     }
     
     // Get/set and helper methods.
