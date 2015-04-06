@@ -5,12 +5,11 @@ import java.util.LinkedList;
 public final class 
 RenderStateManager
 {
-	//Fields
-	private static LinkedList<Integer> states = new LinkedList<Integer>();
-	
-	private static int mostRecentlyUpdated = 0;
+	//Fields	
 	private static int updating = 0;
+	private static int updated = 0;
 	private static int rendering = 0;
+
 	
 	static long updateThreadID;
 	static long renderThreadID;
@@ -27,9 +26,6 @@ RenderStateManager
 	public synchronized static void
 	initializeStates()
 	{
-		states.addLast(0);
-		states.addLast(1);
-		states.addLast(2);		
 	}
 	
 	
@@ -42,7 +38,7 @@ RenderStateManager
 	public synchronized static int
 	getUpdatedState()
 	{
-		return mostRecentlyUpdated;
+		return updated;
 	}
 	
 	public synchronized static int
@@ -56,27 +52,32 @@ RenderStateManager
 	public synchronized static void
 	startRenderState()
 	{
-		rendering = states.removeFirst();
+		rendering = updated;
 	}
 	
 	public synchronized static void
 	finishRenderState()
 	{
-		states.addLast(rendering);
 		rendering = -1;
 	}
 	
 	public synchronized static void
 	startUpdatingState()
 	{
-		updating = states.removeLast();
+		for (int i = 0; i < 2; ++i)
+		{
+			if (i != updated && i != rendering)
+			{
+				updating = i;
+				break;
+			}
+		}
 	}
 	
 	public synchronized static void
 	finishUpdatingState()
 	{
-		states.addFirst(updating);
-		mostRecentlyUpdated = updating;
+		updated = updating;
 		updating = -1;
 	}
 	

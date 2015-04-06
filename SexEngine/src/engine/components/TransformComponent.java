@@ -1,5 +1,6 @@
 package engine.components;
 import engine.core.Actor;
+import engine.core.GameTime;
 import engine.core.God;
 import engine.core.IMultiRenderState;
 import engine.core.RenderStateManager;
@@ -33,7 +34,14 @@ implements IMultiRenderState
 	
 		positions = new Vector3[3];
 		rotations = new double[3];
-		scales = new Vector3[3];		
+		scales = new Vector3[3];
+		
+		for (int i = 0; i < 3; i++)
+		{
+			positions[i] = new Vector3();
+			rotations[i] = 0.0;
+			scales[i] = new Vector3();
+		}
 
 	}
 	
@@ -48,11 +56,18 @@ implements IMultiRenderState
 		scales[updating].set(scales[updated]);
 	}	
 
+	void
+	update(GameTime gameTime)
+	{
+		updateRenderState();
+	}
+	
 	@Override
 	protected void 
 	setEnabled(boolean enabled)
 	{
 		// Transform ne moze da se disable-uje.
+		God.TransformManager.prepareToDie(this);
 	}
 	
 	@Override
@@ -73,19 +88,19 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			return positions[updating];
 		}
-		else if (index == RenderStateManager.getRenderThreadID())
+		else// if (index == RenderStateManager.getRenderThreadID())
 		{
 			return positions[RenderStateManager.getRenderState()];
 		}
-		else
-		{
-			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
-			return null;
-		}
+//		else
+//		{
+//			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
+//			return null;
+//		}
 	}
 	
 	public void
@@ -93,7 +108,7 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			positions[updating].set(position);
 		}
@@ -109,19 +124,19 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			return rotations[updating];
 		}
-		else if (index == RenderStateManager.getRenderThreadID())
+		else //if (index == RenderStateManager.getRenderThreadID())
 		{
 			return rotations[RenderStateManager.getRenderState()];
 		}
-		else
-		{
-			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
-			return 0;
-		}
+//		else
+//		{
+//			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
+//			return 0;
+//		}
 	}
 	
 	public void
@@ -129,10 +144,10 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			rotations[updating] = rotation;
-			rotations[updating] = MathHelper.clamp(rotations[updating], -MathHelper.PI, MathHelper.PI);
+			rotations[updating] = MathHelper.clampAngle(rotations[updating]);
 		}
 		else
 		{
@@ -146,19 +161,19 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			return scales[updating];
 		}
-		else if (index == RenderStateManager.getRenderThreadID())
+		else //if (index == RenderStateManager.getRenderThreadID())
 		{
 			return scales[RenderStateManager.getRenderState()];
 		}
-		else
-		{
-			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
-			return null;
-		}
+//		else
+//		{
+//			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
+//			return null;
+//		}
 	}
 	
 	public void
@@ -172,7 +187,7 @@ implements IMultiRenderState
 		
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			scales[updating].set(scale);
 		}
@@ -188,13 +203,13 @@ implements IMultiRenderState
 	{
 		long index = Thread.currentThread().getId();
 		
-		if (index == RenderStateManager.getUpdateThreadID())
+		if (index != RenderStateManager.getRenderThreadID())
 		{
 			positions[updating].add(distance);
 		}
 		else
 		{
-			System.err.println("Greska : Neregistrovani Thread pristupa podacima(Transform Component)!");
+			System.err.println("Greska : Neregistrovani Thread pristupa podacima (Transform Component)!");
 		}
 	}
 	
@@ -212,7 +227,7 @@ implements IMultiRenderState
 		if (index == RenderStateManager.getUpdateThreadID())
 		{
 			rotations[updating] += angle;
-			rotations[updating] = MathHelper.clamp(rotations[updating], -MathHelper.PI, MathHelper.PI);
+			rotations[updating] = MathHelper.clampAngle(rotations[updating]);
 		}
 		else
 		{

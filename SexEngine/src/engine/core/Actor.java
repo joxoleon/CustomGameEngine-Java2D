@@ -1,6 +1,5 @@
 package engine.core;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import engine.components.GameComponent;
@@ -29,6 +28,9 @@ public class Actor extends GameObject
 		this.transform = God.TransformManager.instantiate(this);
 		this.addComponent(transform);
 		
+		this.renderingComponent = God.RenderingManager.instantiate(this);
+		this.addComponent(renderingComponent);
+		
 		// Dodavanje rendering componente. Imaj u vidu da bi mogao da prosledis Sprite ili neka slicna sranja pa da se to ovde inicijalizuje.
 	}
 	
@@ -47,7 +49,8 @@ public class Actor extends GameObject
 		}
 	}
 	
-	void finalDestroy()
+	void
+	finalDestroy()
 	{
 		for(GameComponent component : components)
 		{
@@ -56,13 +59,26 @@ public class Actor extends GameObject
 		components.clear();
 	}
 
-	
+	// Ako postoji komponenta, samo inicijalizovati novim vrijednostima, ne uklanjati.
 	public void 
 	addComponent(GameComponent component)
-	{
-		if(getComponent(component.getName()) != null)
-			removeComponent(component.getName());
-			
+	{		
+		GameComponent prevComponent = getComponent(component.getName());
+		
+		if(prevComponent != null)
+		{
+			if (component.getName().equals("TransformComponent") ||
+				component.getName().equals("RenderingComponent"))
+			{
+				return;
+			}
+		}
+		
+		if (prevComponent != null)
+		{
+			removeComponent(prevComponent.getName());
+		}
+		
 		components.add(component);
 	}
 	
@@ -90,6 +106,13 @@ public class Actor extends GameObject
 	public GameComponent 
 	removeComponent(String name)
 	{
+		if (name == null ||
+			name.equals("TransformComponent") ||
+			name.equals("RenderingComponent"))
+		{
+			return null;
+		}
+		
 		GameComponent returnComponent = null;
 		for(GameComponent component : components)
 		{
@@ -114,6 +137,12 @@ public class Actor extends GameObject
 	getRenderingComponent()
 	{
 		return renderingComponent;
+	}
+	
+	public boolean
+	isDestroyed()
+	{
+		return isDestroyed;
 	}
 	
 }

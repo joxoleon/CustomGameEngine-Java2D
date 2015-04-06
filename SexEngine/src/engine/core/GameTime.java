@@ -48,7 +48,7 @@ public class GameTime
 		return ((long)(targetPeriod * 1000000000 - (System.nanoTime() - startTime)) / 1000000);
 	}
 	
-	public double 
+	private double 
 	dt_ms()
 	{
 		return dt_ms;

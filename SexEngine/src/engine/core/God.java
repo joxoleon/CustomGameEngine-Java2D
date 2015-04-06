@@ -1,23 +1,20 @@
 package engine.core;
 
 import engine.components.TransformManager;
+import engine.components.RenderingManager;
 
 public final class God
 {
-
-	
-	
-	
-	
 	//Fields
 	public static final TransformManager TransformManager = new TransformManager(20, 10, 5, 30, 50);
-//	private static LinkedList<DestructionElem> actorsForDestruction = new LinkedList<DestructionElem>();
-	// Potrebno je ubaciti strukturu koja sadrzi Actora i destructionCounter kako bi se vreme unistavnja objekta pratilo. Ili mozda realizovati to
-	// na neki manje gej nacin.
+	public static final RenderingManager RenderingManager = new RenderingManager(20, 10, 5, 30, 50);
 	
 	private static DestructionElem destructionHead;
 	
-	public static void setForDestruction(Actor actor, double destructionTime)
+	
+	//Methods
+	public static void 
+	setForDestruction(Actor actor, double destructionTime)
 	{
 		DestructionElem de = new DestructionElem(actor, destructionTime);
 		
@@ -27,7 +24,8 @@ public final class God
 	
 	}
 	
-	public static void update(GameTime gameTime)
+	public static void 
+	DestructionUpdate(GameTime gameTime)
 	{
 		DestructionElem curr = destructionHead;
 		
@@ -66,9 +64,7 @@ public final class God
 		}
 		
 	}
-	
-	
-	
+
 	private
 	God()
 	{

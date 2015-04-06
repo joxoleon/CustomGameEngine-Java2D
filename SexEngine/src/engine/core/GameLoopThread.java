@@ -43,6 +43,7 @@ extends Thread
 	public void exitThread()
 	{
 		run = false;
-		interrupt();
+		// Nema potrebe za sada.
+//		interrupt();
 	}
 }

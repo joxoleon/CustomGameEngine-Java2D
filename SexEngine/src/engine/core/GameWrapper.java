@@ -45,7 +45,7 @@ extends JPanel
 	public 
 	GameWrapper()
 	{
-		updateThread = new UpdateThread(this, 60);
+		updateThread = new UpdateThread(this, 20);
 		renderThread = new RenderThread(this, 60);
 		
 		RenderStateManager.updateThreadID = updateThread.getId();
@@ -57,8 +57,8 @@ extends JPanel
 		{
 			public void windowClosing(WindowEvent e)
 			{
-				updateThread.interrupt();
-				renderThread.interrupt();
+				updateThread.exitThread();
+				renderThread.exitThread();
 				
 				try
 				{
@@ -68,7 +68,6 @@ extends JPanel
 				{
 					e1.printStackTrace();
 				}
-
 				
 				System.exit(0);
 			}
@@ -102,23 +101,18 @@ extends JPanel
 	}
 	
 	// Methods.
-	public void 
+	void 
 	update(GameTime gameTime)
 	{
 		RenderStateManager.startUpdatingState();
 		
+		God.TransformManager.update(gameTime);
 		
 		Input.SwitchStates();
-		
-		if (Input.isButtonPressed(Buttons.LeftButton))
-		{
-		}
-		
 		if (Input.isKeyPressed(Keys.Escape))
 		{
 			exit();
 		}
-		
 		
 		RenderStateManager.finishUpdatingState();
 	}
@@ -148,11 +142,12 @@ extends JPanel
 		}
 	}
 	
-	public void 
+	void 
 	render(Graphics2D g2d)
 	{
 		RenderStateManager.startRenderState();
-
+		
+		God.RenderingManager.render(g2d);
 		
 		RenderStateManager.finishRenderState();
 		
@@ -171,7 +166,6 @@ extends JPanel
 		updateThread.exitThread();
 		renderThread.exitThread();
 		
-		System.out.println("escape");
 		System.exit(0);
 	}
 	

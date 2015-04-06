@@ -64,7 +64,27 @@ public class MathHelper
 		
 	}
 	
+	public static double
+	clampAngle(double value)
+	{
+		if (value > MathHelper.PI)
+			return value - MathHelper.TwoPI;
+		else if (value < -MathHelper.PI)
+			return value + MathHelper.TwoPI;
+		else
+			return value;
+	}
 	
+	public static float
+	clampAngle(float value)
+	{
+		if (value > MathHelper.PI)
+			return value - MathHelper.TwoPI;
+		else if (value < -MathHelper.PI)
+			return value + MathHelper.TwoPI;
+		else
+			return value;
+	}
 	
 	// Hidden constructor.
 	private 
