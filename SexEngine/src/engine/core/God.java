@@ -2,12 +2,15 @@ package engine.core;
 
 import engine.components.TransformManager;
 import engine.components.RenderingManager;
+import engine.components.ScriptManager;
 
 public final class God
 {
 	//Fields
 	public static final TransformManager TransformManager = new TransformManager(20, 10, 5, 30, 50);
 	public static final RenderingManager RenderingManager = new RenderingManager(20, 10, 5, 30, 50);
+	
+	public static final ScriptManager ScriptManager = new ScriptManager();
 	
 	private static DestructionElem destructionHead;
 	

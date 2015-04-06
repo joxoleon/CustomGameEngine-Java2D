@@ -7,10 +7,10 @@ public class GameTime
 	
 	private long startTime;
 	private long elapsedTime;
-	private double dt_ms;
-	private double dt_s;
+	private float dt_ms;
+	private float dt_s;
 	
-	private double timeScale = 1.0;
+	private float timeScale = 1.0f;
 	
 	public
 	GameTime(long targetRate)
@@ -38,8 +38,8 @@ public class GameTime
 		elapsedTime = currentTime - startTime;
 		startTime = currentTime;
 		
-		dt_ms = elapsedTime / 1000000.0;
-		dt_s = dt_ms / 1000.0;
+		dt_ms = elapsedTime / 1000000.0f;
+		dt_s = dt_ms / 1000.0f;
 	}
 	
 	public long 
@@ -48,26 +48,26 @@ public class GameTime
 		return ((long)(targetPeriod * 1000000000 - (System.nanoTime() - startTime)) / 1000000);
 	}
 	
-	private double 
+	private float 
 	dt_ms()
 	{
 		return dt_ms;
 	}
 	
-	public double 
+	public float 
 	dt_s()
 	{
 		return dt_s;
 	}
 
-	public double 
+	public float 
 	getTimeScale()
 	{
 		return timeScale;
 	}
 
 	public void 
-	setTimeScale(double timeScale)
+	setTimeScale(float timeScale)
 	{
 		this.timeScale = timeScale;
 	}

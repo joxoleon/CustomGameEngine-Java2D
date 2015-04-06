@@ -115,6 +115,20 @@ public class Vector3 {
         }
     }
     
+    // OVO JE ZA 2D, PREPRAVITI NA 3D!!!
+    public Vector3 rotate(float angle)
+    {
+    	Vector3 result = new Vector3(this);
+    	
+    	float sin = (float)Math.sin(angle);
+    	float cos = (float)Math.cos(angle);
+    	
+    	result.x = result.x * cos + result.y * sin;
+    	result.y = result.x * cos - result.y * sin;
+    	
+    	return result;
+    }
+    
     public static float dot(Vector3 v1, Vector3 v2)
     {
         return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
@@ -183,4 +197,5 @@ public class Vector3 {
         dst.y = src.y;
         dst.z = src.z;
     }
+
 }

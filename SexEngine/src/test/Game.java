@@ -35,10 +35,13 @@ extends GameWrapper
 			{
 				transform.translate(i * 10, i * 10);
 			}
+			
+			if (i % 3 == 0)
+			{
+				PlayerControl controlScript = new PlayerControl(actors[i]);
+				actors[i].addComponent(controlScript);
+			}
 		}
-		
-		
-		
 	}
 	
 	public static void

@@ -256,5 +256,12 @@ implements IMultiRenderState
 		}
 	}
 
-	
+	public Vector3
+	getForward()
+	{
+		Vector3 forward = new Vector3(0, -1, 0);
+		forward = forward.rotate((float)getRotation());
+		
+		return forward;
+	}
 }

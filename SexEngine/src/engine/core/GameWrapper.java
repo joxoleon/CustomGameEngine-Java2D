@@ -106,9 +106,17 @@ extends JPanel
 	{
 		RenderStateManager.startUpdatingState();
 		
-		God.TransformManager.update(gameTime);
+		// Fizika.
 		
+		
+		// Input.
 		Input.SwitchStates();
+		
+		God.TransformManager.update(gameTime);
+		God.ScriptManager.update(gameTime);
+		
+		
+		
 		if (Input.isKeyPressed(Keys.Escape))
 		{
 			exit();
