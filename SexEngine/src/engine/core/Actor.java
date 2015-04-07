@@ -2,6 +2,9 @@ package engine.core;
 
 import java.util.LinkedList;
 
+
+import java.util.ListIterator;
+
 import engine.components.GameComponent;
 import engine.components.RenderingComponent;
 import engine.components.TransformComponent;
@@ -16,7 +19,6 @@ public class Actor extends GameObject
 	protected TransformComponent transform;
 	protected RenderingComponent renderingComponent;
 
-	//private HashMap<String, GameComponent> components = new HashMap<String, GameComponent>();
 	LinkedList<GameComponent> components = new LinkedList<GameComponent>();
 	
 	
@@ -39,14 +41,11 @@ public class Actor extends GameObject
 	public void 
 	destroy()
 	{
-		if (isDestroyed == false)
-		{
 			isDestroyed = true;
 			for(GameComponent component : components)
 				component.disable();
-			
-			//Pozvadi God.destroy(this, vreme);
-		}
+		
+			//***************************Pozvadi God.destroy(this, vreme);
 	}
 	
 	void
@@ -59,7 +58,7 @@ public class Actor extends GameObject
 		components.clear();
 	}
 
-	// Ako postoji komponenta, samo inicijalizovati novim vrijednostima, ne uklanjati.
+	// Ako postoji komponenta, samo inicijalizovati novim vriednostima, ne uklanjati.
 	public void 
 	addComponent(GameComponent component)
 	{		
@@ -69,14 +68,10 @@ public class Actor extends GameObject
 		{
 			if (component.getName().equals("TransformComponent") ||
 				component.getName().equals("RenderingComponent"))
-			{
 				return;
-			}
-		}
-		
-		if (prevComponent != null)
-		{
-			removeComponent(prevComponent.getName());
+			else
+				removeComponent(prevComponent.getName());
+
 		}
 		
 		components.add(component);
@@ -114,14 +109,18 @@ public class Actor extends GameObject
 		}
 		
 		GameComponent returnComponent = null;
-		for(GameComponent component : components)
+		
+		ListIterator iterator = components.listIterator();
+		
+		while(iterator.hasNext())
 		{
+			GameComponent component = (GameComponent) iterator.next();
 			if(component.getName().equals(name))
 			{
-				returnComponent = component;
-				components.remove(component);
-				return returnComponent;
-			}	
+				iterator.remove();
+				return component;
+			}
+			
 		}
 		
 		return null;

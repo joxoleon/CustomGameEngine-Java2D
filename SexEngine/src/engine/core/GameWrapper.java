@@ -21,7 +21,6 @@ import engine.input.Keys;
 public class GameWrapper
 extends JPanel
 {
-	
 	// Fields.
 	private static final long serialVersionUID = 1L;
 
@@ -30,9 +29,9 @@ extends JPanel
 	private GameLoopThread updateThread;
 	private GameLoopThread renderThread;
 	
-	Object paintSync = new Object();
-	boolean waitingOnPaint = false;
+	Object renderSyncObject = new Object();
 	
+	boolean waitingOnPaint = false;
 	boolean finishedPaint = true;
 	
 	BufferedImage backBuffer;
@@ -45,7 +44,7 @@ extends JPanel
 	public 
 	GameWrapper()
 	{
-		updateThread = new UpdateThread(this, 80);
+		updateThread = new UpdateThread(this, 60);
 		renderThread = new RenderThread(this, 60);
 		
 		RenderStateManager.updateThreadID = updateThread.getId();
@@ -79,7 +78,7 @@ extends JPanel
 			{
 				panelDimension = getSize();
 				
-				synchronized(paintSync)
+				synchronized(renderSyncObject)
 				{
 					paintBuffer = frontBuffer;
 				}
@@ -94,7 +93,7 @@ extends JPanel
 		initializeKeyboardInput();
 		initializeMouseInput();
 		
-		synchronized(paintSync)
+		synchronized(renderSyncObject)
 		{
 			paintBuffer = frontBuffer;
 		}
@@ -104,6 +103,8 @@ extends JPanel
 	void 
 	update(GameTime gameTime)
 	{
+
+		
 		RenderStateManager.startUpdatingState();
 		
 		// Fizika.
@@ -112,15 +113,13 @@ extends JPanel
 		// Input.
 		Input.SwitchStates();
 		
-		God.TransformManager.update(gameTime);
-		God.ScriptManager.update(gameTime);
-		
-		
-		
 		if (Input.isKeyPressed(Keys.Escape))
 		{
 			exit();
 		}
+		
+		God.TransformManager.update(gameTime);
+		God.ScriptManager.update(gameTime);
 		
 		RenderStateManager.finishUpdatingState();
 	}
@@ -128,7 +127,7 @@ extends JPanel
 	public void 
 	paint(Graphics g)
 	{
-		synchronized(paintSync)
+		synchronized(renderSyncObject)
 		{
 			finishedPaint = false;
 			paintBuffer = frontBuffer;
@@ -141,12 +140,12 @@ extends JPanel
 		if (paintBuffer != null)
 			g2d.drawImage(paintBuffer, 0, 0, this);
 		
-		synchronized(paintSync)
+		synchronized(renderSyncObject)
 		{
 			finishedPaint = true;
 			
 			if (waitingOnPaint)
-				paintSync.notifyAll();
+				renderSyncObject.notifyAll();
 		}
 	}
 	
@@ -188,13 +187,11 @@ extends JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(1920, 1080);//panelDimension.width, panelDimension.height);
+		frame.setSize(1920, 1080);
 		
 		frame.addKeyListener(Input.Instance());
 		
 		frame.setVisible(true);
-		
-		System.out.println(this.getWidth() +", " + this.getHeight());
 	}
 	
 	private void

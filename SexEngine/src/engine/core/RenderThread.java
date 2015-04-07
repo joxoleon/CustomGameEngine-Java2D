@@ -40,14 +40,13 @@ extends GameLoopThread
 			gameWrapper.render(g2d);
 		
 		
-			synchronized(gameWrapper.paintSync)
+			synchronized(gameWrapper.renderSyncObject)
 			{
 				while(gameWrapper.finishedPaint == false)
 				{
-					gameWrapper.waitingOnPaint = true;
 					try
 					{
-						gameWrapper.paintSync.wait();
+						gameWrapper.renderSyncObject.wait();
 					} catch (InterruptedException e)
 					{
 					}
