@@ -116,18 +116,29 @@ public class Vector3 {
     }
     
     // OVO JE ZA 2D, PREPRAVITI NA 3D!!!
-    public Vector3 rotate(float angle)
+    public void rotate(float angle)
     {
-    	Vector3 result = new Vector3(this);
     	
     	float sin = (float)Math.sin(angle);
     	float cos = (float)Math.cos(angle);
     	
-    	float tempx = result.x;
-    	result.x = result.x * cos + result.y * sin;
-    	result.y = - tempx * sin + result.y * cos;
+    	float tempx = x;
+    	x = x * cos - y * sin;
+    	y = tempx * sin + y * cos;
+
+    }
+    
+    public static Vector3 rotate(Vector3 vector, float angle)
+    {
     	
-    	return result;
+    	float sin = (float)Math.sin(angle);
+    	float cos = (float)Math.cos(angle);
+    	
+    	float tempx = vector.x;
+    	vector.x = vector.x * cos - vector.y * sin;
+    	vector.y = tempx * sin + vector.y * cos;
+    	
+    	return vector;
     }
     
     public static float dot(Vector3 v1, Vector3 v2)

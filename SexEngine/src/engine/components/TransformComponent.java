@@ -257,11 +257,20 @@ implements IMultiRenderState
 	}
 
 	public Vector3
-	getForward()
+	getFront()
 	{
 		Vector3 forward = new Vector3(0, -1, 0);
-		forward = forward.rotate((float)getRotation());
-		
+		forward.rotate((float)getRotation());
+		System.out.println(forward);
 		return forward;
 	}
+	
+	public Vector3
+	getRight()
+	{
+		Vector3 right = new Vector3(1, 0, 0);
+		right.rotate((float)(getRotation()));
+		return right;
+	}
+	
 }

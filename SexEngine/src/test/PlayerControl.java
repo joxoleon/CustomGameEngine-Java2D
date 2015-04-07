@@ -11,8 +11,9 @@ import engine.utility.MathHelper;
 public class PlayerControl
 extends ScriptComponent
 {
-	private Vector3 moveDistance = new Vector3();
+
 	private float moveSpeed = 50.0f;
+	private boolean relative = true;
 	
 	public
 	PlayerControl(Actor parent)
@@ -30,61 +31,59 @@ extends ScriptComponent
 	@Override
 	public void onUpdate(GameTime gameTime)
 	{
-		moveDistance.set(0, 0, 0);
+		float forward = 0;
+		float right = 0;
 		
 		if (Input.isKeyDown(Keys.W))
-		{
-			moveDistance.y -= 1;
-		}
-		
+			forward -= 1;
 		if (Input.isKeyDown(Keys.S))
-		{
-			moveDistance.y += 1;
-		}
-		
+			forward += 1;
 		if (Input.isKeyDown(Keys.A))
-		{
-			moveDistance.x -= 1;
-		}
-		
+			right -= 1;
 		if (Input.isKeyDown(Keys.D))
+			right += 1;
+		if (forward * forward + right * right > 1)
 		{
-			moveDistance.x += 1;
+			forward /= Math.sqrt(2);
+			right /= Math.sqrt(2);
 		}
 		
-		if (moveDistance.magnitude() > 0)
+		System.out.println(forward +", " + right);
+		
+		float rotation = 0;
+		if (Input.isKeyDown(Keys.Q))
+			rotation -= 0.1;
+		if (Input.isKeyDown(Keys.E))
+			rotation += 0.1;
+		if(rotation != 0)
+			parent.getTransformComponent().rotate(rotation);
+		
+		
+		Vector3 moveVector = null;
+		
+		if(relative == true)
 		{
-			moveDistance.normalize();
+			Vector3 forwardMoveVector = parent.getTransformComponent().getFront();
+			Vector3 rightMoveVector = parent.getTransformComponent().getRight();
+			
+			forwardMoveVector.mul(-forward);
+			rightMoveVector.mul(right);
+			moveVector = forwardMoveVector.add(rightMoveVector);
+			moveVector.normalize();
+		}
+		else
+		{
+			moveVector = new Vector3(right, forward, 0);
 		}
 		
-		System.out.println("Pre rotacije " +moveDistance);
+		moveVector.mul(moveSpeed * gameTime.dt_s());
+		parent.getTransformComponent().translate(moveVector);
 		
-		moveDistance = moveDistance.rotate(MathHelper.PIOverFour);
-		
-		System.out.println("Posle rotacije" + moveDistance);
-		
-		moveDistance.mul(moveSpeed * gameTime.dt_s());
-		
-		
-//		
-//		float rotation = 0;
-//		
-//		if (Input.isKeyDown(Keys.Q))
-//		{
-//			rotation -= 0.1;
-//		}
-//		
-//		if (Input.isKeyDown(Keys.E))
-//		{
-//			rotation += 0.1;
-//		}
-//		
-//		parent.getTransformComponent().rotate(rotation);
-//		
-//		moveDistance = moveDistance.rotate((float)parent.getTransformComponent().getRotation());
+//		moveDistance.rotate(-(float)parent.getTransformComponent().getRotation());
+//		moveDistance.mul(moveSpeed * gameTime.dt_s());
 //		parent.getTransformComponent().translate(moveDistance);
-//		
-//		System.out.println(moveDistance.x + " " + moveDistance.y);
+		
+//		System.out.println(moveDistance);
 	}
 
 	@Override

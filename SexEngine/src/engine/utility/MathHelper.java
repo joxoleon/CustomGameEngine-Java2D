@@ -7,6 +7,7 @@ public class MathHelper
 	public static final float PIOverTwo = PI / 2;
 	public static final float PIOverFour = PI / 4;
 	public static final float TwoPI = 2 * PI;
+	public static final float SQRT2 = (float)Math.sqrt(2);
 	
 	private static final float radToDeg = 180.0f / PI;
 	private static final float degToRad = PI / 180.0f;
