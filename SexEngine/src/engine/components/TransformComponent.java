@@ -50,6 +50,7 @@ implements IMultiRenderState
 	{
 		int updated = RenderStateManager.getUpdatedState();
 		updating = RenderStateManager.getUpdatingState();
+
 				
 		positions[updating].set(positions[updated]);
 		rotations[updating] = rotations[updated];
@@ -261,7 +262,6 @@ implements IMultiRenderState
 	{
 		Vector3 forward = new Vector3(0, -1, 0);
 		forward.rotate((float)getRotation());
-		System.out.println(forward);
 		return forward;
 	}
 	

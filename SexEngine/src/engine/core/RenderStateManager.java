@@ -64,7 +64,7 @@ RenderStateManager
 	public synchronized static void
 	startUpdatingState()
 	{
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			if (i != updated && i != rendering)
 			{
@@ -78,7 +78,7 @@ RenderStateManager
 	finishUpdatingState()
 	{
 		updated = updating;
-		updating = -1;
+		updating = -1;	
 	}
 	
 	public static long 

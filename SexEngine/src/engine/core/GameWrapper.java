@@ -45,7 +45,7 @@ extends JPanel
 	public 
 	GameWrapper()
 	{
-		updateThread = new UpdateThread(this, 20);
+		updateThread = new UpdateThread(this, 80);
 		renderThread = new RenderThread(this, 60);
 		
 		RenderStateManager.updateThreadID = updateThread.getId();
@@ -184,15 +184,17 @@ extends JPanel
 		
 		frame.getContentPane().add(this);
 		
-//		frame.setUndecorated(true);
+		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(300, 300);//panelDimension.width, panelDimension.height);
+		frame.setSize(1920, 1080);//panelDimension.width, panelDimension.height);
 		
 		frame.addKeyListener(Input.Instance());
 		
 		frame.setVisible(true);
+		
+		System.out.println(this.getWidth() +", " + this.getHeight());
 	}
 	
 	private void

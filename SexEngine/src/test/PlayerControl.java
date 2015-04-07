@@ -48,7 +48,6 @@ extends ScriptComponent
 			right /= Math.sqrt(2);
 		}
 		
-		System.out.println(forward +", " + right);
 		
 		float rotation = 0;
 		if (Input.isKeyDown(Keys.Q))

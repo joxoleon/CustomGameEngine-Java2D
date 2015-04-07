@@ -25,21 +25,22 @@ extends GameWrapper
 	{
 		super();
 		
-		Actor[] actors = new Actor[20];
+		Actor[] actors = new Actor[5000];
 		
-		for (int i = 0; i < actors.length; i++)
+		for (int i = 0; i < 50; i++)
 		{
-			actors[i] = new Actor();
-			TransformComponent transform = actors[i].getTransformComponent();
-			if (transform != null)
+			for(int j = 0; j < 100; j++)
 			{
-				transform.translate(i * 10, i * 10);
-			}
-			
-			if (i % 3 == 0)
-			{
-				PlayerControl controlScript = new PlayerControl(actors[i]);
-				actors[i].addComponent(controlScript);
+				actors[i] = new Actor();
+				TransformComponent transform = actors[i].getTransformComponent();
+				if (transform != null)
+				{
+					transform.translate(j * 20, (i * 20));
+				}
+				
+
+					PlayerControl controlScript = new PlayerControl(actors[i]);
+					actors[i].addComponent(controlScript);
 			}
 		}
 	}
