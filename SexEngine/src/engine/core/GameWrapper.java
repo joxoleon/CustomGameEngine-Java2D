@@ -1,5 +1,6 @@
 package engine.core;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,13 +10,21 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import engine.datastructures.Vector3;
+import engine.graphics.Sprite;
 import engine.input.Buttons;
 import engine.input.Input;
 import engine.input.Keys;
+import engine.utility.MathHelper;
 
 
 public class GameWrapper
@@ -25,6 +34,8 @@ extends JPanel
 	private static final long serialVersionUID = 1L;
 
 	private JFrame frame;
+	
+	
 	
 	private GameLoopThread updateThread;
 	private GameLoopThread renderThread;
@@ -38,7 +49,13 @@ extends JPanel
 	BufferedImage frontBuffer;
 	BufferedImage paintBuffer;
 	
-	Dimension panelDimension = new Dimension(1, 1);
+	
+	
+	Dimension panelDimension = new Dimension(1, 1);	
+	Vector3 scaleFactor = new Vector3(1, 1, 1);
+	
+	Dimension worldDimension = new Dimension(1920, 1080);
+	
 	
 	// Constructors.
 	public 
@@ -54,6 +71,7 @@ extends JPanel
 		
 		frame.addWindowListener(new WindowAdapter()
 		{
+			
 			public void windowClosing(WindowEvent e)
 			{
 				updateThread.exitThread();
@@ -77,6 +95,7 @@ extends JPanel
 			public void componentResized(ComponentEvent e)
 			{
 				panelDimension = getSize();
+				calculateScaleFactor();
 				
 				synchronized(renderSyncObject)
 				{
@@ -92,6 +111,9 @@ extends JPanel
 		RenderStateManager.initializeStates();
 		initializeKeyboardInput();
 		initializeMouseInput();
+		
+		initializeGraphicsContent();
+		initializeAudioContent();
 		
 		synchronized(renderSyncObject)
 		{
@@ -154,7 +176,26 @@ extends JPanel
 
 		RenderStateManager.startRenderState();
 		
-		God.RenderingManager.render(g2d);
+		g2d.scale(scaleFactor.x, scaleFactor.y);
+		
+//		God.RenderingManager.render(g2d)
+		
+		Sprite s1 = new Sprite(God.GraphicsContent.getImage("Jagoda"), 320, 320, true);
+		Sprite s2 = new Sprite(God.GraphicsContent.getImage("Mesec"), 320, 320, true);
+		Sprite s3 = new Sprite(God.GraphicsContent.getImage("Kugla"), 320, 320, true);
+		
+		s1.setPosition(160, 160);
+		
+		s2.setPosition(480, 160);
+//		s2.setScale(0.3f, 1.0f);
+		
+		s3.setPosition(800, 160);
+		s3.setRotation(-MathHelper.PIOverFour);;
+		s3.setScale(0.2f, 0.2f);
+	
+		s1.render(g2d, true);
+		s2.render(g2d, true);
+		s3.render(g2d, true);
 		
 		RenderStateManager.finishRenderState();
 		
@@ -183,17 +224,27 @@ extends JPanel
 		
 		frame.getContentPane().add(this);
 		
-		frame.setUndecorated(true);
+		frame.setUndecorated(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(1920, 1200);
+		frame.setSize(600, 600);
+		
+		calculateScaleFactor();
 		
 		frame.addKeyListener(Input.Instance());
 		
 		frame.setVisible(true);
 	}
 	
+	private void
+	calculateScaleFactor()
+	{
+		scaleFactor.x = (float)panelDimension.width / (float)worldDimension.width;
+		scaleFactor.y = (float)panelDimension.height / (float)worldDimension.height;
+	}
+
+
 	private void
 	initializeKeyboardInput()
 	{
@@ -211,6 +262,40 @@ extends JPanel
 		
 		Input.Instance().setFocusable(true);
 		Input.Instance().requestFocusInWindow();
+	}
+
+	private void
+	initializeGraphicsContent()
+	{
+		God.GraphicsContent.loadImage("Jagoda", "resources/images/Strawberry_01.jpg");
+		God.GraphicsContent.loadImage("Mesec", "resources/images/Moon_01.jpg");
+		God.GraphicsContent.loadImage("Kugla", "resources/images/GlassBall_01.jpg");
+	}
+	
+	private void
+	initializeAudioContent()
+	{
+		
+	}
+		
+	public int getScreenWidth()
+	{
+		return panelDimension.width;
+	}
+	
+	public int getScreenHeight()
+	{
+		return panelDimension.height;
+	}
+	
+	public int getWorldWidth()
+	{
+		return worldDimension.width;
+	}
+	
+	public int getWorldHeight()
+	{
+		return worldDimension.height;
 	}
 	
 }

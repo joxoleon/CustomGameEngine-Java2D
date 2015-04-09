@@ -108,9 +108,7 @@ public class Actor extends GameObject
 			return null;
 		}
 		
-		GameComponent returnComponent = null;
-		
-		ListIterator iterator = components.listIterator();
+		ListIterator<GameComponent> iterator = components.listIterator();
 		
 		while(iterator.hasNext())
 		{
