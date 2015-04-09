@@ -63,24 +63,26 @@ public class Sprite
 			offsetY = simpleSpriteImage.getHeight() / 2.0f;
 		}
 		
-		if(hasTransform)
-		{
+//		if(hasTransform)
+//		{
 			backupTransform = g2d.getTransform();
 			g2d.translate(position.x, position.y);
 			g2d.rotate(rotation);
 			g2d.scale(initialScale.x * userScale.x, initialScale.y * userScale.y);
-		}
+//		}
 		
 		if (isSpriteSheet == false)
 			g2d.drawImage(simpleSpriteImage, (int)-offsetX, (int)-offsetY, null);
+//		else
+			//Logika za iscrtavanje spriteSheet-a
 		
 		
 		
 		
-		if(hasTransform)
-		{
+//		if(hasTransform)
+//		{
 			g2d.setTransform(backupTransform);
-		}
+		
 	}
 
 	

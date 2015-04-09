@@ -1,6 +1,7 @@
 package engine.graphics;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import javax.imageio.ImageIO;
 public class GraphicsContent
 {
 	private HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
+	private BufferedReader br;
 	
 	public void
 	loadImage(String name, String path)

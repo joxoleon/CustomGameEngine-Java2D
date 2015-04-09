@@ -1,0 +1,3 @@
+Jagoda resources/images/Strawberry_01.jpg
+Mesec resources/images/Moon_01.jpg
+Kugla resources/images/GlassBall_01.jpg

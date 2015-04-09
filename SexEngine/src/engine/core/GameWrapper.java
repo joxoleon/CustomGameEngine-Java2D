@@ -10,8 +10,11 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -36,7 +39,6 @@ extends JPanel
 	private JFrame frame;
 	
 	
-	
 	private GameLoopThread updateThread;
 	private GameLoopThread renderThread;
 	
@@ -48,8 +50,7 @@ extends JPanel
 	BufferedImage backBuffer;
 	BufferedImage frontBuffer;
 	BufferedImage paintBuffer;
-	
-	
+
 	
 	Dimension panelDimension = new Dimension(1, 1);	
 	Vector3 scaleFactor = new Vector3(1, 1, 1);
@@ -190,8 +191,8 @@ extends JPanel
 //		s2.setScale(0.3f, 1.0f);
 		
 		s3.setPosition(800, 160);
-		s3.setRotation(-MathHelper.PIOverFour);;
-		s3.setScale(0.2f, 0.2f);
+//		s3.setRotation(-MathHelper.PIOverFour);;
+//		s3.setScale(0.2f, 0.2f); 
 	
 		s1.render(g2d, true);
 		s2.render(g2d, true);
@@ -244,7 +245,6 @@ extends JPanel
 		scaleFactor.y = (float)panelDimension.height / (float)worldDimension.height;
 	}
 
-
 	private void
 	initializeKeyboardInput()
 	{
@@ -267,9 +267,33 @@ extends JPanel
 	private void
 	initializeGraphicsContent()
 	{
-		God.GraphicsContent.loadImage("Jagoda", "resources/images/Strawberry_01.jpg");
-		God.GraphicsContent.loadImage("Mesec", "resources/images/Moon_01.jpg");
-		God.GraphicsContent.loadImage("Kugla", "resources/images/GlassBall_01.jpg");
+		String resourcePath = "resources/images/images.txt";
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(resourcePath));
+			
+			String line = reader.readLine();
+			
+			while(line != null)
+			{
+				String[] tokens = line.split(" ");
+				God.GraphicsContent.loadImage(tokens[0], tokens[1]);
+				line = reader.readLine();			
+			}
+			
+			reader.close();
+			
+		} 
+		catch (FileNotFoundException e)
+		{
+			System.err.println("Could not load image resource file! Path: " + resourcePath);
+		}
+		catch(IOException e)
+		{
+			System.err.println("Error reading file line! (GraphicsContent)");
+		}
+		
+
 	}
 	
 	private void
@@ -278,22 +302,26 @@ extends JPanel
 		
 	}
 		
-	public int getScreenWidth()
+	public int 
+	getScreenWidth()
 	{
 		return panelDimension.width;
 	}
 	
-	public int getScreenHeight()
+	public int 
+	getScreenHeight()
 	{
 		return panelDimension.height;
 	}
 	
-	public int getWorldWidth()
+	public int 
+	getWorldWidth()
 	{
 		return worldDimension.width;
 	}
 	
-	public int getWorldHeight()
+	public int 
+	getWorldHeight()
 	{
 		return worldDimension.height;
 	}
