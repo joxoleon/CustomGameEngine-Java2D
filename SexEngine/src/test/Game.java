@@ -31,7 +31,7 @@ extends GameWrapper
 				TransformComponent transform = actors[i].getTransformComponent();
 				if (transform != null)
 				{
-					transform.translate(j * 20, (i * 22));
+					transform.translate(j * 20, (i * 20));
 				}
 				
 
@@ -39,6 +39,7 @@ extends GameWrapper
 					actors[i].addComponent(controlScript);
 			}
 		}
+		
 	}
 	
 	public static void

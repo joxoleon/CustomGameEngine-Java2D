@@ -1,7 +1,9 @@
 package engine.components;
 
 import java.awt.Graphics2D;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import engine.core.Actor;
 import engine.core.GameTime;
@@ -47,13 +49,6 @@ public class RenderingManager
 		return component;
 	}
 	
-	private void 
-	prepareToDie(RenderingComponent component)
-	{
-		renderingComponents.remove(component);
-		component.isLastRender = true;
-	}
-	
 	public void
 	destroy(RenderingComponent component)
 	{
@@ -70,17 +65,23 @@ public class RenderingManager
 		{
 			renderingComponents.addAll(newRenderingComponents);
 			newRenderingComponents.clear();
-		}
+		}	
 		
-		for(RenderingComponent component : renderingComponents)
+		
+		ListIterator<RenderingComponent> iterator = renderingComponents.listIterator();
+		
+		while(iterator.hasNext())
 		{
-			if(component.parent.isDestroyed())
+			RenderingComponent component = (RenderingComponent)iterator.next();
+			if(component.parent.isDestroyed() == true)
 			{
-				prepareToDie(component);
+				iterator.remove();
+				component.isLastRender = true;
 			}
 			else
 			{
-				component.render(g2d);
+				if(component.isEnabled() == true)
+					component.render(g2d);
 			}
 		}
 		

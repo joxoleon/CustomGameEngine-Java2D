@@ -28,12 +28,6 @@ extends GameComponent
 	public abstract	String 
 	getName();
 
-	@Override
-	protected void 
-	setEnabled(boolean enabled)
-	{
-		God.ScriptManager.removeScript(this);
-	}
 
 	@Override
 	protected void 

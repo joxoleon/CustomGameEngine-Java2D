@@ -104,7 +104,6 @@ extends JPanel
 	update(GameTime gameTime)
 	{
 
-		
 		RenderStateManager.startUpdatingState();
 		
 		// Fizika.
@@ -152,6 +151,7 @@ extends JPanel
 	void 
 	render(Graphics2D g2d)
 	{
+
 		RenderStateManager.startRenderState();
 		
 		God.RenderingManager.render(g2d);
@@ -187,7 +187,7 @@ extends JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(1920, 1080);
+		frame.setSize(1920, 1200);
 		
 		frame.addKeyListener(Input.Instance());
 		

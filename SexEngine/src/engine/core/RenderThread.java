@@ -39,9 +39,11 @@ extends GameLoopThread
 		
 			gameWrapper.render(g2d);
 		
-		
+			
 			synchronized(gameWrapper.renderSyncObject)
 			{
+				gameWrapper.waitingOnPaint = true;
+				
 				while(gameWrapper.finishedPaint == false)
 				{
 					try
@@ -51,12 +53,16 @@ extends GameLoopThread
 					{
 					}
 				}
+
+				
 				gameWrapper.waitingOnPaint = false;
 				gameWrapper.frontBuffer = gameWrapper.backBuffer;
 			}
 			
 			gameWrapper.repaint();
 		}
+
+
 	}
 	
 }

@@ -7,6 +7,11 @@ public class Vector3 {
     public float y;
     public float z;
     
+    public static final Vector3 zero = new Vector3();
+    public static final Vector3 up = new Vector3(0, -1, 0);
+    public static final Vector3 right = new Vector3(1, 0, 0);
+    
+    
     // Constructors.
     public Vector3()
     {
@@ -100,7 +105,13 @@ public class Vector3 {
     
     public float magnitude()
     {
-        return distance(new Vector3(), this);
+        return distance(zero, this);
+    }
+    
+    public float
+    magnitudeSq()
+    {
+    	return distanceSq(zero, this);
     }
     
     public void normalize()

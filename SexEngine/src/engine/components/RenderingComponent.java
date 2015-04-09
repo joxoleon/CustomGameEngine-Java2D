@@ -21,6 +21,7 @@ extends GameComponent
 	initialize(Actor parent)
 	{
 		this.parent = parent;
+		this.setEnabled(true);
 	}
 
 	public void
@@ -58,18 +59,11 @@ extends GameComponent
 
 	@Override
 	protected void 
-	setEnabled(boolean enabled)
-	{		
-	}
-
-	@Override
-	protected void 
 	destroyComponent()
 	{
 		God.RenderingManager.destroy(this);
 		//Ukloni reference
 	}
-	
 	
 	protected final void 
 	setLastRender()

@@ -16,13 +16,13 @@ public class TestMain
 			list.add(i + 1);
 		}
 		
-		ListIterator myIterator;
+		ListIterator<Integer> myIterator;
 		myIterator = list.listIterator();
 		
 		while(myIterator.hasNext())
 		{
-			Integer value = (int)myIterator.next();
-			if(value == 3)
+			Integer value = myIterator.next();
+			if(value > 3)
 			{
 				myIterator.remove();
 			}

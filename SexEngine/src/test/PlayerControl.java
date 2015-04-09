@@ -31,6 +31,7 @@ extends ScriptComponent
 	@Override
 	public void onUpdate(GameTime gameTime)
 	{
+		
 		float forward = 0;
 		float right = 0;
 		
@@ -44,8 +45,8 @@ extends ScriptComponent
 			right += 1;
 		if (forward * forward + right * right > 1)
 		{
-			forward /= Math.sqrt(2);
-			right /= Math.sqrt(2);
+			forward /= MathHelper.SQRT2;
+			right /= MathHelper.SQRT2;
 		}
 		
 		
@@ -67,8 +68,9 @@ extends ScriptComponent
 			
 			forwardMoveVector.mul(-forward);
 			rightMoveVector.mul(right);
-			moveVector = forwardMoveVector.add(rightMoveVector);
-			moveVector.normalize();
+			//moveVector = forwardMoveVector.add(rightMoveVector);
+			moveVector = Vector3.sum(forwardMoveVector, rightMoveVector);
+//			moveVector.normalize();
 		}
 		else
 		{
@@ -78,11 +80,7 @@ extends ScriptComponent
 		moveVector.mul(moveSpeed * gameTime.dt_s());
 		parent.getTransformComponent().translate(moveVector);
 		
-//		moveDistance.rotate(-(float)parent.getTransformComponent().getRotation());
-//		moveDistance.mul(moveSpeed * gameTime.dt_s());
-//		parent.getTransformComponent().translate(moveDistance);
 		
-//		System.out.println(moveDistance);
 	}
 
 	@Override

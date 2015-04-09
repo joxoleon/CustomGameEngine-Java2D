@@ -1,6 +1,7 @@
 package engine.components;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import engine.core.GameTime;
 
@@ -24,16 +25,22 @@ public class ScriptManager
 	public void
 	update(GameTime gameTime)
 	{
-		for(ScriptComponent script : scripts)
+		
+		ListIterator<ScriptComponent> iterator = scripts.listIterator();
+		
+		while(iterator.hasNext())
 		{
-			if (script.parent.isDestroyed() == false)
+			ScriptComponent component = iterator.next();
+			if(component.parent.isDestroyed() == false)
 			{
-				script.onUpdate(gameTime);
+				if(component.isEnabled() == true)
+					component.onUpdate(gameTime);
 			}
 			else
 			{
-				// Unisti. Pazi na for petlju za listu.
+				iterator.remove();
 			}
 		}
+		
 	}
 }

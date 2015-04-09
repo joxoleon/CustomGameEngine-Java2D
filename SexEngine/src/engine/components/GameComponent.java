@@ -7,7 +7,8 @@ public abstract class GameComponent
 	
 	//Fields
 	protected Actor parent;
-	protected boolean isEnabled;
+	private boolean isEnabled = true;
+	
 	
 	//Constructors
 	public 
@@ -26,23 +27,9 @@ public abstract class GameComponent
 	}
 	
 	public void 
-	enable()
+	setEnabled(boolean enabled)
 	{
-		if (isEnabled == false)
-		{
-			isEnabled = true;
-			setEnabled(true);
-		}
-	}
-	
-	public void 
-	disable()
-	{
-		if (isEnabled == true)
-		{
-			isEnabled = false;
-			setEnabled(false);
-		}
+		isEnabled = enabled;
 	}
 	
 	public boolean 
@@ -50,9 +37,6 @@ public abstract class GameComponent
 	{
 		return isEnabled;
 	}
-	
-	protected abstract void 
-	setEnabled(boolean enabled);
 
 	public void
 	destroy()

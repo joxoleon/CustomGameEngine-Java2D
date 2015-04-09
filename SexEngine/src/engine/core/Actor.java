@@ -42,10 +42,10 @@ public class Actor extends GameObject
 	destroy()
 	{
 			isDestroyed = true;
-			for(GameComponent component : components)
-				component.disable();
+//			for(GameComponent component : components)
+//				component.disable();
 		
-			//***************************Pozvadi God.destroy(this, vreme);
+			//***************************Pozvati God.destroy(this, vreme);
 	}
 	
 	void
