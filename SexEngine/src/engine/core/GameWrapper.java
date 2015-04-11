@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 
 import engine.datastructures.Vector3;
 import engine.graphics.Sprite;
+import engine.graphics.SpriteSheet;
 import engine.input.Buttons;
 import engine.input.Input;
 import engine.input.Keys;
@@ -57,6 +58,7 @@ extends JPanel
 	
 	Dimension worldDimension = new Dimension(1920, 1080);
 	
+	SpriteSheet ss1;
 	
 	// Constructors.
 	public 
@@ -120,6 +122,8 @@ extends JPanel
 		{
 			paintBuffer = frontBuffer;
 		}
+		
+		ss1 = new SpriteSheet(God.GraphicsContent.getSpriteSheet("Solaire"), 320, 320, 1.0f);
 	}
 	
 	// Methods.
@@ -142,6 +146,16 @@ extends JPanel
 		
 		God.TransformManager.update(gameTime);
 		God.ScriptManager.update(gameTime);
+		
+		if (Input.isKeyDown(Keys.Right))
+		{
+			this.ss1.playAnimation();
+		}
+		else
+		{
+			this.ss1.stopAnimation();
+		}
+		
 		
 		RenderStateManager.finishUpdatingState();
 	}
@@ -172,18 +186,19 @@ extends JPanel
 	}
 	
 	void 
-	render(Graphics2D g2d)
+	render(Graphics2D g2d, GameTime gameTime)
 	{
-
 		RenderStateManager.startRenderState();
 		
 		g2d.scale(scaleFactor.x, scaleFactor.y);
 		
-//		God.RenderingManager.render(g2d)
+		God.RenderingManager.render(g2d, gameTime);
 		
-		Sprite s1 = new Sprite(God.GraphicsContent.getImage("Jagoda"), 320, 320, true);
-		Sprite s2 = new Sprite(God.GraphicsContent.getImage("Mesec"), 320, 320, true);
-		Sprite s3 = new Sprite(God.GraphicsContent.getImage("Kugla"), 320, 320, true);
+		Sprite s1 = new Sprite(God.GraphicsContent.getImage("Jagoda"), 320, 320);
+		Sprite s2 = new Sprite(God.GraphicsContent.getImage("Mesec"), 320, 320);
+		Sprite s3 = new Sprite(God.GraphicsContent.getImage("Kugla"), 320, 320);
+		
+//		SpriteSheet ss1 = new SpriteSheet(God.GraphicsContent.getSpriteSheet("Plavusa"), 320, 320, 5.0f);
 		
 		s1.setPosition(160, 160);
 		
@@ -193,10 +208,15 @@ extends JPanel
 		s3.setPosition(800, 160);
 //		s3.setRotation(-MathHelper.PIOverFour);;
 //		s3.setScale(0.2f, 0.2f); 
+		
+		ss1.setPosition(1120, 160);
 	
 		s1.render(g2d, true);
 		s2.render(g2d, true);
 		s3.render(g2d, true);
+		
+		ss1.playAnimation();
+		ss1.render(g2d, true);
 		
 		RenderStateManager.finishRenderState();
 		
@@ -277,23 +297,46 @@ extends JPanel
 			while(line != null)
 			{
 				String[] tokens = line.split(" ");
-				God.GraphicsContent.loadImage(tokens[0], tokens[1]);
+				if (tokens.length == 2)
+				{
+					God.GraphicsContent.loadImage(tokens[0], tokens[1]);
+				}
+				else if (tokens.length == 9)
+				{
+					God.GraphicsContent.loadSpriteSheet(
+						tokens[0],
+						tokens[1],
+						Integer.parseInt(tokens[2]),
+						Integer.parseInt(tokens[3]),
+						Integer.parseInt(tokens[4]),
+						Integer.parseInt(tokens[5]),
+						Integer.parseInt(tokens[6]),
+						Integer.parseInt(tokens[7]),
+						Integer.parseInt(tokens[8]));
+				}
+				else
+				{
+					System.err.println("Unexpected input in images resource file! File path: " + resourcePath);
+				}
+				
 				line = reader.readLine();			
 			}
 			
 			reader.close();
 			
-		} 
+		}
+		catch (NumberFormatException e)
+		{
+			System.err.println("Could not parse an integer from images resource file! File path: " + resourcePath);
+		}
 		catch (FileNotFoundException e)
 		{
-			System.err.println("Could not load image resource file! Path: " + resourcePath);
+			System.err.println("Could not load image resource file! File path: " + resourcePath);
 		}
 		catch(IOException e)
 		{
-			System.err.println("Error reading file line! (GraphicsContent)");
+			System.err.println("Error reading file line! File path: " + resourcePath);
 		}
-		
-
 	}
 	
 	private void

@@ -21,24 +21,24 @@ extends GameWrapper
 	{
 		super();
 		
-		Actor[] actors = new Actor[5000];
-		
-		for (int i = 0; i < 50; i++)
-		{
-			for(int j = 0; j < 100; j++)
-			{
-				actors[i] = new Actor();
-				TransformComponent transform = actors[i].getTransformComponent();
-				if (transform != null)
-				{
-					transform.translate(j * 20, (i * 20));
-				}
-				
-
-					PlayerControl controlScript = new PlayerControl(actors[i]);
-					actors[i].addComponent(controlScript);
-			}
-		}
+//		Actor[] actors = new Actor[5000];
+//		
+//		for (int i = 0; i < 50; i++)
+//		{
+//			for(int j = 0; j < 100; j++)
+//			{
+//				actors[i] = new Actor();
+//				TransformComponent transform = actors[i].getTransformComponent();
+//				if (transform != null)
+//				{
+//					transform.translate(j * 20, (i * 20));
+//				}
+//				
+//
+//					PlayerControl controlScript = new PlayerControl(actors[i]);
+//					actors[i].addComponent(controlScript);
+//			}
+//		}
 		
 	}
 	

@@ -8,12 +8,17 @@ import java.util.ListIterator;
 import engine.core.Actor;
 import engine.core.GameTime;
 import engine.datastructures.Pool;
+import engine.graphics.SpriteSheet;
 
 public class RenderingManager
 {
 	Pool<RenderingComponent> renderingComponentPool = null;
+	
 	LinkedList<RenderingComponent> renderingComponents = new LinkedList<RenderingComponent>();
 	LinkedList<RenderingComponent> newRenderingComponents;
+	
+	LinkedList<SpriteSheet> spriteSheets = new LinkedList<SpriteSheet>();
+	LinkedList<SpriteSheet> newSpriteSheets;
 	
 	public
 	RenderingManager(int poolInitialSize, int poolMinSize, int poolMinSizeThreshold, int poolMaxSize, int poolMaxSizeThreshold)
@@ -29,6 +34,7 @@ public class RenderingManager
 				poolMaxSizeThreshold);
 			
 			newRenderingComponents = new LinkedList<RenderingComponent>();
+			newSpriteSheets = new LinkedList<SpriteSheet>();
 		}
 	}
 	
@@ -59,13 +65,21 @@ public class RenderingManager
 	}
 	
 	public void
-	render(Graphics2D g2d)
+	render(Graphics2D g2d, GameTime gameTime)
 	{
 		synchronized(this)
 		{
 			renderingComponents.addAll(newRenderingComponents);
 			newRenderingComponents.clear();
-		}	
+			
+			spriteSheets.addAll(newSpriteSheets);
+			newSpriteSheets.clear();
+		}
+		
+		for (SpriteSheet spriteSheet : spriteSheets)
+		{
+			spriteSheet.update(gameTime);
+		}
 		
 		
 		ListIterator<RenderingComponent> iterator = renderingComponents.listIterator();
@@ -88,6 +102,15 @@ public class RenderingManager
 		synchronized(this)
 		{
 			renderingComponentPool.update();
+		}
+	}
+	
+	public void
+	registerSpriteSheet(SpriteSheet spriteSheet)
+	{
+		synchronized(this)
+		{
+			newSpriteSheets.add(spriteSheet);
 		}
 	}
 	

@@ -15,7 +15,7 @@ extends GameComponent
 	//Fields
 	boolean isLastRender = false;
 	boolean drawForwardVector = true;
-
+	
 	//Methods
 	void 
 	initialize(Actor parent)

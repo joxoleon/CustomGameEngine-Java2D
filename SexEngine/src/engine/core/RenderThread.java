@@ -37,7 +37,7 @@ extends GameLoopThread
 		{
 			Graphics2D g2d = (Graphics2D)gameWrapper.backBuffer.getGraphics();
 		
-			gameWrapper.render(g2d);
+			gameWrapper.render(g2d, gameTime());
 		
 			
 			synchronized(gameWrapper.renderSyncObject)
