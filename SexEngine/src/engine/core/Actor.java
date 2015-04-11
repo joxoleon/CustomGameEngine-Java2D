@@ -8,6 +8,7 @@ import java.util.ListIterator;
 import engine.components.GameComponent;
 import engine.components.RenderingComponent;
 import engine.components.TransformComponent;
+import engine.graphics.Model;
 
 
 
@@ -27,15 +28,18 @@ public class Actor extends GameObject
 	public
 	Actor()
 	{
+		this(null);
+	}
+	
+	public
+	Actor(Model model)
+	{
 		this.transform = God.TransformManager.instantiate(this);
 		this.addComponent(transform);
 		
-		this.renderingComponent = God.RenderingManager.instantiate(this);
+		this.renderingComponent = God.RenderingManager.instantiate(this, model);
 		this.addComponent(renderingComponent);
-		
-		// Dodavanje rendering componente. Imaj u vidu da bi mogao da prosledis Sprite ili neka slicna sranja pa da se to ovde inicijalizuje.
 	}
-	
 	
 	//Methods
 	public void 

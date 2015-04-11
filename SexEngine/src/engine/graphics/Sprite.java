@@ -10,6 +10,7 @@ import engine.utility.MathHelper;
 public class Sprite
 {
 	protected BufferedImage image;
+	private String name;
 	
 	private boolean hasOffset = false;
 	
@@ -21,8 +22,9 @@ public class Sprite
 	private AffineTransform backupTransform;
 	
 	public
-	Sprite(BufferedImage image, int width, int height)
+	Sprite(String name, BufferedImage image, int width, int height)
 	{
+		this.name = name;
 		this.image = image;
 		
 		initialScale.x = (float)width / (float)image.getWidth();
@@ -67,6 +69,11 @@ public class Sprite
 		g2d.drawImage(image, (int)-offsetX, (int)-offsetY, null);
 		
 		restoreGraphicsContext(g2d);
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 	
 	public void

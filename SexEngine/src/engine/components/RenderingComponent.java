@@ -8,6 +8,7 @@ import engine.core.Actor;
 import engine.core.GameTime;
 import engine.core.God;
 import engine.datastructures.Vector3;
+import engine.graphics.Model;
 
 public class RenderingComponent 
 extends GameComponent
@@ -16,38 +17,42 @@ extends GameComponent
 	boolean isLastRender = false;
 	boolean drawForwardVector = true;
 	
-	//Methods
+	public Model model;
+	
+	//Methods	
 	void 
-	initialize(Actor parent)
+	initialize(Actor parent, Model model)
 	{
 		this.parent = parent;
+		this.model = model;
 		this.setEnabled(true);
 	}
 
 	public void
 	render(Graphics2D g2d)
 	{
-		AffineTransform aft = g2d.getTransform();
-		
-		Vector3 position = parent.getTransformComponent().getPosition();
-		double rotation = parent.getTransformComponent().getRotation();
-		
-		Polygon p = new Polygon();
-		p.addPoint(-10, 7);
-		p.addPoint(10, 7);
-		p.addPoint(0, -7);
-		
-		g2d.setPaint(Color.black);
-		g2d.translate(position.x, position.y);
-		g2d.rotate(rotation);
-		g2d.fill(p);
-		
-		if(drawForwardVector == true)
+		Model m = model;
+		if (m != null)
 		{
-			g2d.setPaint(Color.red);
-			g2d.drawLine(0, 0, 0, -10);
+			AffineTransform aft = g2d.getTransform();
+			
+			Vector3 position = parent.getTransformComponent().getPosition();
+			double rotation = parent.getTransformComponent().getRotation();
+			Vector3 scale = parent.getTransformComponent().getScale();
+			
+			g2d.translate(position.x, position.y);
+			g2d.rotate(rotation);
+			g2d.scale(scale.x, scale.y);
+			
+			m.render(g2d);
+			
+			if(drawForwardVector == true)
+			{
+				g2d.setPaint(Color.red);
+				g2d.drawLine(0, 0, 0, -10);
+			}
+			g2d.setTransform(aft);
 		}
-		g2d.setTransform(aft);
 	}
 	
 	@Override

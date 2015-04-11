@@ -7,7 +7,7 @@ public abstract class GameComponent
 	
 	//Fields
 	protected Actor parent;
-	private boolean isEnabled = true;
+	private boolean isEnabled = false;
 	
 	
 	//Constructors

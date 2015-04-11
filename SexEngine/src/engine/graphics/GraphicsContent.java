@@ -2,16 +2,124 @@ package engine.graphics;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import engine.core.God;
+
 public class GraphicsContent
 {
 	private HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
 	private HashMap<String, BufferedImage[]> spriteSheets = new HashMap<String, BufferedImage[]>();
+	
+	public void
+	loadSprites(String resourcePath)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(resourcePath));
+			
+			String line = reader.readLine();
+			
+			while(line != null)
+			{
+				
+				if (line.equals("") || line.startsWith("//"))
+				{
+					line = reader.readLine();
+					continue;
+				}
+				
+				String[] tokens = line.split(" ");
+				if (tokens.length == 2)
+				{
+					God.GraphicsContent.loadImage(tokens[0], tokens[1]);
+				}
+				else
+				{
+					System.err.println("Unexpected input in images resource file! File path: " + resourcePath);
+				}
+				
+				line = reader.readLine();			
+			}
+			
+			reader.close();
+		}
+		catch (NumberFormatException e)
+		{
+			System.err.println("Could not parse an integer from images resource file! File path: " + resourcePath);
+		}
+		catch (FileNotFoundException e)
+		{
+			System.err.println("Could not load image resource file! File path: " + resourcePath);
+		}
+		catch(IOException e)
+		{
+			System.err.println("Error reading file line! File path: " + resourcePath);
+		}
+	}
+	
+	public void
+	loadSpriteSheets(String resourcePath)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(resourcePath));
+			
+			String line = reader.readLine();
+			
+			while(line != null)
+			{
+				
+				if (line.equals("") || line.startsWith("//"))
+				{
+					line = reader.readLine();
+					continue;
+				}
+				
+				String[] tokens = line.split(" ");
+				if (tokens.length == 9)
+				{
+					God.GraphicsContent.loadSpriteSheet(
+						tokens[0],
+						tokens[1],
+						Integer.parseInt(tokens[2]),
+						Integer.parseInt(tokens[3]),
+						Integer.parseInt(tokens[4]),
+						Integer.parseInt(tokens[5]),
+						Integer.parseInt(tokens[6]),
+						Integer.parseInt(tokens[7]),
+						Integer.parseInt(tokens[8]));
+				}
+				else
+				{
+					System.err.println("Unexpected input in spritesheets resource file! File path: " + resourcePath);
+				}
+				
+				line = reader.readLine();			
+			}
+			
+			reader.close();
+		}
+		catch (NumberFormatException e)
+		{
+			System.err.println("Could not parse an integer from images resource file! File path: " + resourcePath);
+		}
+		catch (FileNotFoundException e)
+		{
+			System.err.println("Could not load image resource file! File path: " + resourcePath);
+		}
+		catch(IOException e)
+		{
+			System.err.println("Error reading file line! File path: " + resourcePath);
+		}
+	}
 	
 	public void
 	loadImage(String name, String path)

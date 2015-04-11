@@ -16,15 +16,15 @@ extends Sprite
 	private boolean isPlaying;
 	
 	public
-	SpriteSheet(BufferedImage[] images, boolean hasOffset, float animationTime)
+	SpriteSheet(String name, BufferedImage[] images, boolean hasOffset, float animationTime)
 	{
-		this(images, images[0].getWidth(), images[0].getHeight(), animationTime);
+		this(name, images, images[0].getWidth(), images[0].getHeight(), animationTime);
 	}
 	
 	public
-	SpriteSheet(BufferedImage[] images, int width, int height, float animationTime)
+	SpriteSheet(String name, BufferedImage[] images, int width, int height, float animationTime)
 	{
-		super(images[0], width, height);
+		super(name, images[0], width, height);
 		
 		this.spriteSheetImages = images;
 		

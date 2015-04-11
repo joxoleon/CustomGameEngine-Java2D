@@ -8,6 +8,7 @@ import java.util.ListIterator;
 import engine.core.Actor;
 import engine.core.GameTime;
 import engine.datastructures.Pool;
+import engine.graphics.Model;
 import engine.graphics.SpriteSheet;
 
 public class RenderingManager
@@ -39,14 +40,14 @@ public class RenderingManager
 	}
 	
 	public RenderingComponent
-	instantiate(Actor parent)
+	instantiate(Actor parent, Model model)
 	{
 		RenderingComponent component;
 		synchronized(this)
 		{
 			component = renderingComponentPool.allocate();
 		}
-		component.initialize(parent);
+		component.initialize(parent, model);
 		synchronized(this)
 		{
 			newRenderingComponents.add(component);	

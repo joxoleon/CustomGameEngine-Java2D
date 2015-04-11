@@ -4,11 +4,13 @@ import engine.components.TransformManager;
 import engine.components.RenderingManager;
 import engine.components.ScriptManager;
 import engine.graphics.GraphicsContent;
+import engine.graphics.ModelFactory;
 
 public final class God
 {
 	//Fields
 	public static final GraphicsContent GraphicsContent = new GraphicsContent();
+	public static final ModelFactory ModelFactory = engine.graphics.ModelFactory.getInstance();
 	
 	public static final TransformManager TransformManager = new TransformManager(20, 10, 5, 30, 50);
 	public static final RenderingManager RenderingManager = new RenderingManager(20, 10, 5, 30, 50);
