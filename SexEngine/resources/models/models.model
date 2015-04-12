@@ -1,8 +1,8 @@
 //MODELIII AHAHAHHA
 
 // (ime modela) (broj sprajtova)
-Goku 2
-// (ime sprajta ili sprajtshita) (zeljeni/odredisni width) (zeljeni/odredisni height)
-Jagoda 320 320
-Kugla 320 320
-
+Goku 3
+// (ime sprajta ili sprajtshita) (zeljeni/odredisni width) (zeljeni/odredisni height) (transform x) (transform y) (rotation) (scale x) (scale y)
+Jagoda 320 320 0 -320 0 1 1
+Kugla 320 320 0 0 0 1 1
+Mesec 320 320 0 320 0 1 1

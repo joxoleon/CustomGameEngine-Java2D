@@ -12,7 +12,9 @@ public class PlayerControl
 extends ScriptComponent
 {
 
-	private float moveSpeed = 50.0f;
+	private float moveSpeed = 350.0f;
+	private float rotationSpeed = MathHelper.TwoPI;
+	
 	private boolean relative = true;
 	
 	public
@@ -30,8 +32,7 @@ extends ScriptComponent
 
 	@Override
 	public void onUpdate(GameTime gameTime)
-	{
-		
+	{		
 		float forward = 0;
 		float right = 0;
 		
@@ -52,11 +53,11 @@ extends ScriptComponent
 		
 		float rotation = 0;
 		if (Input.isKeyDown(Keys.Q))
-			rotation -= 0.1;
+			rotation -= 1;
 		if (Input.isKeyDown(Keys.E))
-			rotation += 0.1;
+			rotation += 1;
 		if(rotation != 0)
-			parent.getTransformComponent().rotate(rotation);
+			parent.getTransformComponent().rotate(rotation * rotationSpeed * gameTime.dt_s());
 		
 		
 		Vector3 moveVector = null;

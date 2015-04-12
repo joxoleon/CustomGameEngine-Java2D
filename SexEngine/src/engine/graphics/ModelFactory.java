@@ -29,10 +29,12 @@ public class ModelFactory
 		return instance;
 	}
 	
+	// A method that returns a clone of a model.
 	public Model 
 	getNewModel(String name)
 	{
-		return null;
+		Model model = models.get(name);
+		return model.clone(model);
 	}
 	
 	public Model 
@@ -62,6 +64,7 @@ public class ModelFactory
 			// 1 - read head line (Model name and Sprite number)
 			// 2 - read Sprite line (Sprite name and transform)
 			int state = 1;
+			
 			String modelName = null;
 			int spriteNum = 0;
 			int spriteCnt = 0;
@@ -101,7 +104,7 @@ public class ModelFactory
 					
 					case 2:
 					{
-						if (tokens.length == 3)
+						if (tokens.length == 3 || tokens.length == 8)
 						{
 							Sprite sprite = new Sprite(
 								tokens[0],
@@ -112,13 +115,20 @@ public class ModelFactory
 							model.addSprite(sprite);
 							spriteCnt++;
 							
+							if(tokens.length == 8)
+							{
+								sprite.setPosition(Float.parseFloat(tokens[3]), Float.parseFloat(tokens[4]));
+								sprite.setRotation(Float.parseFloat(tokens[5]));
+								sprite.setScale(Float.parseFloat(tokens[6]), Float.parseFloat(tokens[7]));
+								
+							}
+							
 							if (spriteCnt == spriteNum)
 							{
 								models.put(modelName, model);
 								state = 1;
 							}
 						}
-						// else if (za transform)
 						else
 						{
 							System.err.println("Unexpected input in models resource file! File path: " + resourcePath);

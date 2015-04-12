@@ -40,7 +40,7 @@ implements IMultiRenderState
 		{
 			positions[i] = new Vector3();
 			rotations[i] = 0.0;
-			scales[i] = new Vector3();
+			scales[i] = new Vector3(1, 1, 1);
 		}
 
 		this.setEnabled(true);

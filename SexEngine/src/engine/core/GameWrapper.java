@@ -10,15 +10,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.imageio.ImageIO;
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,10 +20,8 @@ import engine.datastructures.Vector3;
 import engine.graphics.Model;
 import engine.graphics.Sprite;
 import engine.graphics.SpriteSheet;
-import engine.input.Buttons;
 import engine.input.Input;
 import engine.input.Keys;
-import engine.utility.MathHelper;
 
 
 public class GameWrapper
@@ -185,35 +177,9 @@ extends JPanel
 		
 		God.RenderingManager.render(g2d, gameTime);
 		
-		Sprite s1 = new Sprite("Jagoda", God.GraphicsContent.getImage("Jagoda"), 320, 320);
-		Sprite s2 = new Sprite("Mesec", God.GraphicsContent.getImage("Mesec"), 320, 320);
-		Sprite s3 = new Sprite("Kugla", God.GraphicsContent.getImage("Kugla"), 320, 320);
-		
-//		Model model = God.ModelFactory.getFlyweightModel("Goku");
-		Model model = new Model("AAA");
-		model.addSprite(s1);
-		model.addSprite(s2);
-		model.addSprite(s3);
-		
-		s1.setPosition(160, 160);
-		
-		s2.setPosition(480, 160);
-//		s2.setScale(0.3f, 1.0f);
-		
-		s3.setPosition(800, 160);
-//		s3.setRotation(-MathHelper.PIOverFour);;
-//		s3.setScale(0.2f, 0.2f);
-		
-		model.render(g2d);
-		
-//		ss1.setPosition(1120, 160);
-	
-//		s1.render(g2d, true);
-//		s2.render(g2d, true);
-//		s3.render(g2d, true);
-		
-//		ss1.playAnimation();
-//		ss1.render(g2d, true);
+//		Sprite s1 = new Sprite("Jagoda", God.GraphicsContent.getImage("Jagoda"), 320, 320);
+//		Sprite s2 = new Sprite("Mesec", God.GraphicsContent.getImage("Mesec"), 320, 320);
+//		Sprite s3 = new Sprite("Kugla", God.GraphicsContent.getImage("Kugla"), 320, 320);
 		
 		RenderStateManager.finishRenderState();
 		

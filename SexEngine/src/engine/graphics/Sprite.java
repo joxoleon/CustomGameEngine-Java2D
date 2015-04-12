@@ -9,6 +9,7 @@ import engine.utility.MathHelper;
 
 public class Sprite
 {
+	// Fields.
 	protected BufferedImage image;
 	private String name;
 	
@@ -16,11 +17,13 @@ public class Sprite
 	
 	private Vector3 position = new Vector3();
 	private float rotation;
-	private Vector3 initialScale = new Vector3(1, 1, 1);
+	protected Vector3 initialScale = new Vector3(1, 1, 1);
 	private Vector3 userScale = new Vector3(1, 1, 1);
 	
 	private AffineTransform backupTransform;
 	
+	
+	// Constructors.
 	public
 	Sprite(String name, BufferedImage image, int width, int height)
 	{
@@ -30,7 +33,19 @@ public class Sprite
 		initialScale.x = (float)width / (float)image.getWidth();
 		initialScale.y = (float)height / (float)image.getHeight();
 	}
+	
+	// Constructor for cloning.
+	protected 
+	Sprite(BufferedImage image, float initialScalex, float initialScaley, String name)
+	{
+		this.name = name;
+		this.image = image;
+		initialScale.x = initialScalex;
+		initialScale.y = initialScaley;
+	}
 		
+	
+	// Methods.
 	private void
 	initGraphicsContext(Graphics2D g2d)
 	{
@@ -66,12 +81,14 @@ public class Sprite
 			offsetY = image.getHeight() / 2.0f;
 		}
 		
+		
 		g2d.drawImage(image, (int)-offsetX, (int)-offsetY, null);
 		
 		restoreGraphicsContext(g2d);
 	}
 	
-	public String getName()
+	public String 
+	getName()
 	{
 		return name;
 	}
@@ -116,4 +133,15 @@ public class Sprite
 		}
 	}
 	
+	public Sprite
+	clone()
+	{
+		return new Sprite(image, initialScale.x, initialScale.y, this.name + "Clone");
+	}
+	
+	public String
+	toString()
+	{
+		return new String("Sprite - Name: " + name + "position: " + position);
+	}
 }

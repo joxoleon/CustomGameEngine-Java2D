@@ -9,6 +9,7 @@ import engine.core.Actor;
 //import engine.core.GameTime;
 import engine.core.GameWrapper;
 //import engine.core.God;
+import engine.core.God;
 
 public class Game
 extends GameWrapper
@@ -39,6 +40,11 @@ extends GameWrapper
 //					actors[i].addComponent(controlScript);
 //			}
 //		}
+		
+		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Goku"));
+		
+		PlayerControl controlScript = new PlayerControl(actor);
+		actor.addComponent(controlScript);
 		
 	}
 	

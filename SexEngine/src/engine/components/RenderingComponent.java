@@ -1,4 +1,5 @@
 package engine.components;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -10,9 +11,9 @@ import engine.core.God;
 import engine.datastructures.Vector3;
 import engine.graphics.Model;
 
-public class RenderingComponent 
+public class RenderingComponent
 extends GameComponent
-{
+ {
 	//Fields
 	boolean isLastRender = false;
 	boolean drawForwardVector = true;
@@ -44,12 +45,13 @@ extends GameComponent
 			g2d.rotate(rotation);
 			g2d.scale(scale.x, scale.y);
 			
+			
 			m.render(g2d);
 			
 			if(drawForwardVector == true)
 			{
 				g2d.setPaint(Color.red);
-				g2d.drawLine(0, 0, 0, -10);
+				g2d.drawLine(0, 0, 0, -100);
 			}
 			g2d.setTransform(aft);
 		}

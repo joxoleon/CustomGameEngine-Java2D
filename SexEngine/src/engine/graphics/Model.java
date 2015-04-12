@@ -10,6 +10,13 @@ public class Model
 	private LinkedList<Sprite> sprites = new LinkedList<Sprite>();
 	
 	
+	//Constructors
+	public 
+	Model(String name)
+	{
+		this.name = name;
+	}
+	
 	// Methods.
 	public void 
 	render(Graphics2D g2d)
@@ -18,12 +25,7 @@ public class Model
 		{
 			sprite.render(g2d, true);
 		}
-	}
-	
-	public 
-	Model(String name)
-	{
-		this.name = name;
+
 	}
 	
 	public Sprite 
@@ -49,6 +51,25 @@ public class Model
 	getName()
 	{
 		return name;
+	}
+
+	// A cloning method which uses Sprite.clone().
+	public Model
+	clone(Model model)
+	{
+		Model returnModel = new Model(model.getName());
+		for (Sprite sprite : sprites)
+		{
+			returnModel.addSprite(sprite.clone());
+		}
+		
+		return returnModel;
+	}
+	
+	public String
+	toString()
+	{
+		return new String("Model name: " + name + " number of Sprites: " + sprites.size());
 	}
 
 }

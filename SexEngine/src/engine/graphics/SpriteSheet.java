@@ -2,12 +2,15 @@ package engine.graphics;
 
 import java.awt.image.BufferedImage;
 
+import com.sun.corba.se.spi.protocol.InitialServerRequestDispatcher;
+
 import engine.core.GameTime;
 import engine.core.God;
 
 public class SpriteSheet
 extends Sprite
 {
+	// Fields.
 	private BufferedImage[] spriteSheetImages;
 	
 	private int frameCounter;
@@ -15,6 +18,8 @@ extends Sprite
 	private float targetFrameTime;
 	private boolean isPlaying;
 	
+	
+	// Constructors.
 	public
 	SpriteSheet(String name, BufferedImage[] images, boolean hasOffset, float animationTime)
 	{
@@ -35,6 +40,19 @@ extends Sprite
 		God.RenderingManager.registerSpriteSheet(this);
 	}
 	
+	// Constructor for cloning.
+	private 
+	SpriteSheet(BufferedImage[] images, float initialScalex, float initialScaley, String name, float targetFrameTime)
+	{
+		super(images[0], initialScalex, initialScaley,  name + "Clone");
+		this.spriteSheetImages = images;
+		frameCounter = 0;
+		frameTime = 0.0f;
+		this.targetFrameTime = targetFrameTime;
+		
+	}
+	
+	// Methods.
 	public void
 	update(GameTime gameTime)
 	{
@@ -73,6 +91,10 @@ extends Sprite
 		frameCounter = 0;
 	}
 	
-
+	public Sprite
+	clone()
+	{
+		return new SpriteSheet(spriteSheetImages, initialScale.x, initialScale.y, getName() + "Clone", targetFrameTime);
+	}
 
 }

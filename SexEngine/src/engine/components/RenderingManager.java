@@ -96,7 +96,9 @@ public class RenderingManager
 			else
 			{
 				if(component.isEnabled() == true)
+				{
 					component.render(g2d);
+				}
 			}
 		}
 		
