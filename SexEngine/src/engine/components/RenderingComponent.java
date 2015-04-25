@@ -20,7 +20,9 @@ extends GameComponent
 	
 	public Model model;
 	
-	//Methods	
+	//Methods
+	
+	/** Initializes the Component, after removing it from the pool. */
 	void 
 	initialize(Actor parent, Model model)
 	{
@@ -28,7 +30,14 @@ extends GameComponent
 		this.model = model;
 		this.setEnabled(true);
 	}
-
+	
+	/** 
+	 * Is called by the RenderingComponentManager.
+	 * Calls the draw method from the Containing model.
+	 * Saves and restores the graphics context during the drawing.
+	 * 
+	 * @param g2d
+	 */
 	public void
 	render(Graphics2D g2d)
 	{
