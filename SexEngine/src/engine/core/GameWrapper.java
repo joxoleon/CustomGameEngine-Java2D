@@ -55,7 +55,7 @@ extends JPanel
 	GameWrapper()
 	{
 		updateThread = new UpdateThread(this, 60);
-		renderThread = new RenderThread(this, 60);
+		renderThread = new RenderThread(this, 70);
 		
 		RenderStateManager.updateThreadID = updateThread.getId();
 		RenderStateManager.renderThreadID = renderThread.getId();
@@ -112,8 +112,7 @@ extends JPanel
 		{
 			paintBuffer = frontBuffer;
 		}
-		
-//		ss1 = new SpriteSheet("Solaire", God.GraphicsContent.getSpriteSheet("Solaire"), 320, 320, 1.0f);
+
 	}
 	
 	// Methods.

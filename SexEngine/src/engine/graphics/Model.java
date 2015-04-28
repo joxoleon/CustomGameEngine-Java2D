@@ -25,17 +25,7 @@ public class Model
 	{
 		for (Sprite sprite : sprites)
 		{
-			if(sprite.isRotatingWithoutModel == true)
-			{
-				RenderingComponent.reverseCurrentRotation(g2d);
 				sprite.render(g2d, true);
-				RenderingComponent.restoreCurrentRotation(g2d);
-				
-			}
-			else
-			{
-				sprite.render(g2d, true);
-			}
 		}
 
 	}
@@ -82,6 +72,12 @@ public class Model
 	toString()
 	{
 		return new String("Model name: " + name + " number of Sprites: " + sprites.size());
+	}
+	
+	public int
+	numOfSprites()
+	{
+		return sprites.size();
 	}
 
 }

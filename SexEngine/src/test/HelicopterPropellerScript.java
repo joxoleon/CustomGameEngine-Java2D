@@ -9,46 +9,47 @@ public class HelicopterPropellerScript
 extends ScriptComponent
 {
 	private Model model;
-	private Sprite propeller1;
-	private Sprite propeller2;
-	
-	private double p1RotationSpeed = 12;
-	private double p2RotationSpeed = 24;
-	
-	private double p1RotationAngle;
-	private double p2RotationAngle;
+	private int numberOfPropellers;
+	private Sprite[] propellers;
+	private double[] propellerSpeeds;
+	private double[] propellerRotationAngles;
+	private double propellerBaseSpeed = 20;
 
 
-	@Override
-	public void 
-	onCreate()
-	{
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void 
 	onAttach()
 	{
 		model = parent.getRenderingComponent().getModel();
-		propeller1 = model.getSprite("Propeller1");
-		propeller2 = model.getSprite("Propeller2");
+		numberOfPropellers = model.numOfSprites() - 1;
+		propellers = new Sprite[numberOfPropellers];
+		propellerSpeeds = new double[numberOfPropellers];
+		propellerRotationAngles = new double[numberOfPropellers];
+		for (int i = 0; i < propellers.length; i++)
+		{
+			propellers[i] = model.getSprite("Propeller" + (i + 1));
+			propellerSpeeds[i] = propellerBaseSpeed + 10 * i;
+			
+		}
 		
-		propeller1.isRotatingWithoutModel = true;
-//		propeller2.isRotatingWithoutModel = true;
-		
+		for (Sprite propeller : propellers)
+		{
+			propeller.isSelfRotating = true;
+		}
+
 	}
 
 	@Override
 	public void 
 	onUpdate(GameTime gameTime)
 	{
-		p1RotationAngle += p1RotationSpeed * gameTime.dt_s();
-		p2RotationAngle += p2RotationSpeed * gameTime.dt_s();
-		
-		propeller1.setRotation((float)p1RotationAngle );
-		propeller2.setRotation((float)p2RotationAngle);
+
+		for (int i = 0; i < propellers.length; i++)
+		{
+			propellerRotationAngles[i] += propellerSpeeds[i] * gameTime.dt_s();
+			propellers[i].setRotation((float)propellerRotationAngles[i]);
+		}
 	}
 
 	@Override
@@ -65,6 +66,12 @@ extends ScriptComponent
 	{
 		// TODO Auto-generated method stub
 		return "HelicopterPropellerScript";
+	}
+	
+	public void
+	updateModel()
+	{
+		onAttach();
 	}
 
 

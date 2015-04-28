@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import engine.components.RenderingComponent;
 import engine.datastructures.Vector3;
 import engine.utility.MathHelper;
 
@@ -13,8 +14,6 @@ public class Sprite
 	protected BufferedImage image;
 	private String name;
 	
-	private boolean hasOffset = false;
-	
 	private Vector3 position = new Vector3();
 	private float rotation;
 	protected Vector3 initialScale = new Vector3(1, 1, 1);
@@ -22,7 +21,8 @@ public class Sprite
 	
 	private AffineTransform backupTransform;
 	
-	public boolean isRotatingWithoutModel;
+	public boolean isSelfRotating;
+	private boolean hasOffset;
 	
 	
 	// Constructors.
@@ -55,6 +55,10 @@ public class Sprite
 		if (hasOffset)
 		{
 			g2d.translate(position.x, position.y);
+			if(isSelfRotating)
+			{
+				RenderingComponent.reverseCurrentRotation(g2d);
+			}
 			g2d.rotate(rotation);
 			g2d.scale(initialScale.x * userScale.x, initialScale.y * userScale.y);
 		}
@@ -144,6 +148,6 @@ public class Sprite
 	public String
 	toString()
 	{
-		return new String("Sprite - Name: " + name + "position: " + position);
+		return new String("Sprite - Name: " + name + "  position: " + position + " , rotation: " + rotation + " , InitialScale: " + initialScale + ", UserScale: " + userScale);
 	}
 }

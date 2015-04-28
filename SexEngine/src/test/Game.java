@@ -41,7 +41,7 @@ extends GameWrapper
 //		}
 		
 		
-		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Helicopter1"));
+		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Helicopter4"));
 		
 		actor.getTransformComponent().setPosition(1920 / 2, 1080 / 2);
 		
@@ -50,6 +50,9 @@ extends GameWrapper
 		
 		HelicopterPropellerScript propellerScript = new HelicopterPropellerScript();
 		actor.addScriptComponent(propellerScript);
+		
+		ModelSwitchScript mss = new ModelSwitchScript();
+		actor.addScriptComponent(mss);
 		
 
 	}

@@ -99,6 +99,12 @@ extends GameComponent
 	{
 		return model;
 	}
+	
+	public void
+	setModel(Model model)
+	{
+		this.model = model;
+	}
  
 	public static void
 	reverseCurrentRotation(Graphics2D g2d)
@@ -111,4 +117,7 @@ extends GameComponent
 	{
 		g2d.rotate(rotation);
 	}
+	
+
+	
  }

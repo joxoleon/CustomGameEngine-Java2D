@@ -16,14 +16,6 @@ extends ScriptComponent
 	
 	private boolean relative = true;
 	
-
-	@Override
-	public void 
-	onCreate()
-	{
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void 
