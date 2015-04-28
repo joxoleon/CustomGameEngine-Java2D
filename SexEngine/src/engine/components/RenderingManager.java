@@ -1,7 +1,6 @@
 package engine.components;
 
 import java.awt.Graphics2D;
-import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.ListIterator;
 

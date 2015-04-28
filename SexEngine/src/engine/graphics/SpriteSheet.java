@@ -2,8 +2,6 @@ package engine.graphics;
 
 import java.awt.image.BufferedImage;
 
-import com.sun.corba.se.spi.protocol.InitialServerRequestDispatcher;
-
 import engine.core.GameTime;
 import engine.core.God;
 

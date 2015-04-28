@@ -1,7 +1,6 @@
 package test;
 
 import engine.components.ScriptComponent;
-import engine.core.Actor;
 import engine.core.GameTime;
 import engine.datastructures.Vector3;
 import engine.input.Input;
@@ -13,25 +12,30 @@ extends ScriptComponent
 {
 
 	private float moveSpeed = 350.0f;
-	private float rotationSpeed = MathHelper.TwoPI;
+	private float rotationSpeed = MathHelper.PI;
 	
 	private boolean relative = true;
 	
-	public
-	PlayerControl(Actor parent)
-	{
-		super(parent);
-	}
 
 	@Override
-	public void onCreate()
+	public void 
+	onCreate()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void 
+	onAttach()
 	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void onUpdate(GameTime gameTime)
+	public void 
+	onUpdate(GameTime gameTime)
 	{		
 		float forward = 0;
 		float right = 0;
@@ -82,20 +86,34 @@ extends ScriptComponent
 		parent.getTransformComponent().translate(moveVector);
 		
 		
+		if(Input.isKeyDown(Keys.O))
+		{
+			parent.getTransformComponent().scale(new Vector3(0.9f, 0.9f, 1));
+			System.out.println("kurac");
+		}
+		
+		if(Input.isKeyDown(Keys.P))
+		{
+			parent.getTransformComponent().scale(new Vector3(1.1f, 1.1f, 1));
+		}
+		
 	}
 
 	@Override
-	public void onDestroy()
+	public void 
+	onDestroy()
 	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public String getName()
+	public String 
+	getName()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return "PlayerControlScript";
 	}
+
+
 
 }

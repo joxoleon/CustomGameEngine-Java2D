@@ -1,8 +1,13 @@
 //MODELIII AHAHAHHA
 
 // (ime modela) (broj sprajtova)
-Goku 3
+//Goku 3
 // (ime sprajta ili sprajtshita) (zeljeni/odredisni width) (zeljeni/odredisni height) (transform x) (transform y) (rotation) (scale x) (scale y)
-Jagoda 320 320 0 -320 0 1 1
-Kugla 320 320 0 0 0 1 1
-Mesec 320 320 0 320 0 1 1
+//Jagoda 320 320 0 -320 0 1 1
+//Kugla 320 320 0 0 0 1 1
+//Mesec 320 320 0 320 0 1 1
+
+Helicopter1 3
+HelicopterBody1 Body 99 294 0 45 0 0.8 0.8
+HelicopterPropeller1 Propeller1 241 241 0 0 0 0.8 0.8
+HelicopterPropeller1 Propeller2 241 241 0 145 0 0.4 0.4

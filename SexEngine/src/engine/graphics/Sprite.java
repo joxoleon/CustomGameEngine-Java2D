@@ -22,6 +22,8 @@ public class Sprite
 	
 	private AffineTransform backupTransform;
 	
+	public boolean isRotatingWithoutModel;
+	
 	
 	// Constructors.
 	public

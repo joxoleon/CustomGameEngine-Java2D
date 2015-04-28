@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 import engine.components.GameComponent;
 import engine.components.RenderingComponent;
+import engine.components.ScriptComponent;
 import engine.components.TransformComponent;
 import engine.graphics.Model;
 
@@ -79,6 +80,13 @@ public class Actor extends GameObject
 		}
 		
 		components.add(component);
+	}
+	
+	public void
+	addScriptComponent(ScriptComponent component)
+	{
+		addComponent(component);
+		component.attachToParent(this);
 	}
 	
 	public GameComponent 

@@ -48,6 +48,7 @@ public class GameTime
 		return ((long)(targetPeriod * 1000000000 - (System.nanoTime() - startTime)) / 1000000);
 	}
 	
+	@SuppressWarnings("unused")
 	private float 
 	dt_ms()
 	{

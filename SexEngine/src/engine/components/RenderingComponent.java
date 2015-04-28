@@ -1,12 +1,9 @@
 package engine.components;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
 
 import engine.core.Actor;
-import engine.core.GameTime;
 import engine.core.God;
 import engine.datastructures.Vector3;
 import engine.graphics.Model;
@@ -16,7 +13,11 @@ extends GameComponent
  {
 	//Fields
 	boolean isLastRender = false;
-	boolean drawForwardVector = true;
+	boolean drawForwardVector = false;
+	
+	private static Vector3 position;
+	private static double rotation;
+	private static Vector3 scale;
 	
 	public Model model;
 	
@@ -46,9 +47,9 @@ extends GameComponent
 		{
 			AffineTransform aft = g2d.getTransform();
 			
-			Vector3 position = parent.getTransformComponent().getPosition();
-			double rotation = parent.getTransformComponent().getRotation();
-			Vector3 scale = parent.getTransformComponent().getScale();
+			position = parent.getTransformComponent().getPosition();
+			rotation = parent.getTransformComponent().getRotation();
+			scale = parent.getTransformComponent().getScale();
 			
 			g2d.translate(position.x, position.y);
 			g2d.rotate(rotation);
@@ -92,4 +93,22 @@ extends GameComponent
 	{
 		return isLastRender;
 	}
-}
+
+	public Model
+	getModel()
+	{
+		return model;
+	}
+ 
+	public static void
+	reverseCurrentRotation(Graphics2D g2d)
+	{
+		g2d.rotate(-rotation);
+	}
+	
+	public static void
+	restoreCurrentRotation(Graphics2D g2d)
+	{
+		g2d.rotate(rotation);
+	}
+ }

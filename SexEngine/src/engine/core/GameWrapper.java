@@ -1,6 +1,5 @@
 package engine.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,8 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import engine.datastructures.Vector3;
-import engine.graphics.Model;
-import engine.graphics.Sprite;
 import engine.graphics.SpriteSheet;
 import engine.input.Input;
 import engine.input.Keys;
@@ -208,11 +205,11 @@ extends JPanel
 		
 		frame.getContentPane().add(this);
 		
-		frame.setUndecorated(false);
+		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(600, 600);
+		frame.setSize(1920, 1080);
 		
 		calculateScaleFactor();
 		

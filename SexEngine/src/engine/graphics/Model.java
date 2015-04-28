@@ -3,6 +3,8 @@ package engine.graphics;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
+import engine.components.RenderingComponent;
+
 public class Model
 {
 	// Fields.
@@ -23,7 +25,17 @@ public class Model
 	{
 		for (Sprite sprite : sprites)
 		{
-			sprite.render(g2d, true);
+			if(sprite.isRotatingWithoutModel == true)
+			{
+				RenderingComponent.reverseCurrentRotation(g2d);
+				sprite.render(g2d, true);
+				RenderingComponent.restoreCurrentRotation(g2d);
+				
+			}
+			else
+			{
+				sprite.render(g2d, true);
+			}
 		}
 
 	}
@@ -40,6 +52,7 @@ public class Model
 		System.err.println("Sprite: " + name + " in model: " + this.name + " not found!");
 		return null;
 	}
+	
 	
 	public void
 	addSprite(Sprite sprite)
@@ -58,10 +71,9 @@ public class Model
 	clone(Model model)
 	{
 		Model returnModel = new Model(model.getName());
-		for (Sprite sprite : sprites)
-		{
+		
+		for(Sprite sprite : sprites)
 			returnModel.addSprite(sprite.clone());
-		}
 		
 		return returnModel;
 	}

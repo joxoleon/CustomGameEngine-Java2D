@@ -104,22 +104,22 @@ public class ModelFactory
 					
 					case 2:
 					{
-						if (tokens.length == 3 || tokens.length == 8)
+						if (tokens.length == 4 || tokens.length == 9)
 						{
 							Sprite sprite = new Sprite(
-								tokens[0],
+								tokens[1],
 								God.GraphicsContent.getImage(tokens[0]),
-								Integer.parseInt(tokens[1]),
-								Integer.parseInt(tokens[2]));
+								Integer.parseInt(tokens[2]),
+								Integer.parseInt(tokens[3]));
 							
 							model.addSprite(sprite);
 							spriteCnt++;
 							
-							if(tokens.length == 8)
+							if(tokens.length == 9)
 							{
-								sprite.setPosition(Float.parseFloat(tokens[3]), Float.parseFloat(tokens[4]));
-								sprite.setRotation(Float.parseFloat(tokens[5]));
-								sprite.setScale(Float.parseFloat(tokens[6]), Float.parseFloat(tokens[7]));
+								sprite.setPosition(Float.parseFloat(tokens[4]), Float.parseFloat(tokens[5]));
+								sprite.setRotation(Float.parseFloat(tokens[6]));
+								sprite.setScale(Float.parseFloat(tokens[7]), Float.parseFloat(tokens[8]));
 								
 							}
 							

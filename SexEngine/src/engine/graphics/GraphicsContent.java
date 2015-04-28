@@ -11,13 +11,15 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import engine.core.God;
-
 public class GraphicsContent
 {
+	// Fields.
 	private HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
+	
 	private HashMap<String, BufferedImage[]> spriteSheets = new HashMap<String, BufferedImage[]>();
 	
+	
+	// Methods.
 	public void
 	loadSprites(String resourcePath)
 	{
@@ -39,7 +41,7 @@ public class GraphicsContent
 				String[] tokens = line.split(" ");
 				if (tokens.length == 2)
 				{
-					God.GraphicsContent.loadImage(tokens[0], tokens[1]);
+					loadImage(tokens[0], tokens[1]);
 				}
 				else
 				{
@@ -86,7 +88,7 @@ public class GraphicsContent
 				String[] tokens = line.split(" ");
 				if (tokens.length == 9)
 				{
-					God.GraphicsContent.loadSpriteSheet(
+					loadSpriteSheet(
 						tokens[0],
 						tokens[1],
 						Integer.parseInt(tokens[2]),
@@ -144,9 +146,6 @@ public class GraphicsContent
 		{
 		    BufferedImage image = ImageIO.read(new File(path));
 		    BufferedImage[] sprites = new BufferedImage[count];
-		    
-//		    int width = image.getWidth() / columns;
-//		    int height = image.getHeight() / rows;
 		    
 			for (int i = 0; i < rows; i++)
 			{

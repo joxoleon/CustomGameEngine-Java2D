@@ -4,7 +4,6 @@ package test;
 //import java.awt.Graphics2D;
 //import java.awt.geom.Rectangle2D;
 
-import engine.components.TransformComponent;
 import engine.core.Actor;
 //import engine.core.GameTime;
 import engine.core.GameWrapper;
@@ -41,11 +40,18 @@ extends GameWrapper
 //			}
 //		}
 		
-		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Goku"));
 		
-		PlayerControl controlScript = new PlayerControl(actor);
-		actor.addComponent(controlScript);
+		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Helicopter1"));
 		
+		actor.getTransformComponent().setPosition(1920 / 2, 1080 / 2);
+		
+		PlayerControl controlScript = new PlayerControl();
+		actor.addScriptComponent(controlScript);
+		
+		HelicopterPropellerScript propellerScript = new HelicopterPropellerScript();
+		actor.addScriptComponent(propellerScript);
+		
+
 	}
 	
 	public static void

@@ -110,6 +110,12 @@ implements IMultiRenderState
 		
 	}
 	
+	public void
+	setPosition(float x, float y)
+	{
+		setPosition(new Vector3(x, y, 1));
+	}
+	
 	public double
 	getRotation()
 	{
