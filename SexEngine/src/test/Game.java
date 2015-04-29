@@ -43,7 +43,7 @@ extends GameWrapper
 		
 		Actor actor = new Actor(God.ModelFactory.getFlyweightModel("Helicopter4"));
 		
-		actor.getTransformComponent().setPosition(1920 / 2, 1080 / 2);
+		actor.getTransformComponent().setPosition(1366 / 6, 720 / 6);
 		
 		PlayerControl controlScript = new PlayerControl();
 		actor.addScriptComponent(controlScript);

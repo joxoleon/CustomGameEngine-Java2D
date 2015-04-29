@@ -93,10 +93,36 @@ public class Sprite
 		restoreGraphicsContext(g2d);
 	}
 	
+	public void
+	render(Graphics2D g2d, float posx, float posy, float width, float height, boolean isCentered)
+	{
+		float offsetX = 0, offsetY = 0;
+		
+		if (isCentered == true)
+		{
+			offsetX = image.getWidth() / 2.0f;
+			offsetY = image.getHeight() / 2.0f;
+		}
+		
+		g2d.drawImage(image, (int)posx, (int)posy, (int)width, (int)height, null);
+	}
+	
 	public String 
 	getName()
 	{
 		return name;
+	}
+	
+	public int
+	getWidth()
+	{
+		return (int)(image.getWidth() * initialScale.x * userScale.x);// * userScale.x * initialScale.x);
+	}
+	
+	public int
+	getHeight()
+	{
+		return (int)(image.getHeight() * initialScale.y * userScale.y);// * userScale.y * initialScale.y);
 	}
 	
 	public void
@@ -139,6 +165,12 @@ public class Sprite
 		}
 	}
 	
+	public BufferedImage
+	getImage()
+	{
+		return image;
+	}
+	
 	public Sprite
 	clone()
 	{
@@ -150,4 +182,5 @@ public class Sprite
 	{
 		return new String("Sprite - Name: " + name + "  position: " + position + " , rotation: " + rotation + " , InitialScale: " + initialScale + ", UserScale: " + userScale);
 	}
+
 }

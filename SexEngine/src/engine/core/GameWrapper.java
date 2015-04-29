@@ -12,13 +12,14 @@ import java.awt.image.BufferedImage;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import engine.datastructures.Vector3;
-import engine.graphics.SpriteSheet;
 import engine.input.Input;
 import engine.input.Keys;
+import engine.terrain.Terrain;
 
 
 public class GameWrapper
@@ -42,13 +43,14 @@ extends JPanel
 	BufferedImage frontBuffer;
 	BufferedImage paintBuffer;
 
+	boolean isFullScreen = false;
 	
 	Dimension panelDimension = new Dimension(1, 1);	
 	Vector3 scaleFactor = new Vector3(1, 1, 1);
 	
 	Dimension worldDimension = new Dimension(1920, 1080);
-	
-	SpriteSheet ss1;
+	Dimension desiredDimension = new Dimension(1366 , 720);
+
 	
 	// Constructors.
 	public 
@@ -168,15 +170,12 @@ extends JPanel
 	render(Graphics2D g2d, GameTime gameTime)
 	{
 		RenderStateManager.startRenderState();
-		
+				
 		g2d.scale(scaleFactor.x, scaleFactor.y);
 		
+		Terrain.renderTerrain(g2d);
 		God.RenderingManager.render(g2d, gameTime);
-		
-//		Sprite s1 = new Sprite("Jagoda", God.GraphicsContent.getImage("Jagoda"), 320, 320);
-//		Sprite s2 = new Sprite("Mesec", God.GraphicsContent.getImage("Mesec"), 320, 320);
-//		Sprite s3 = new Sprite("Kugla", God.GraphicsContent.getImage("Kugla"), 320, 320);
-		
+
 		RenderStateManager.finishRenderState();
 		
 	}
@@ -208,7 +207,7 @@ extends JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLocation(0, 0);
-		frame.setSize(1920, 1080);
+		frame.setSize(desiredDimension.width, desiredDimension.height);
 		
 		calculateScaleFactor();
 		
@@ -249,6 +248,8 @@ extends JPanel
 		God.GraphicsContent.loadSprites("resources/images/images.sprite");
 		God.GraphicsContent.loadSpriteSheets("resources/spritesheets/spriteSheets.spritesheet");
 		God.ModelFactory.loadModels("resources/models/models.model");
+		
+		Terrain.initializeTerrain();
 	}
 	
 	private void
