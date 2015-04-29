@@ -13,7 +13,7 @@ extends ScriptComponent
 	private Sprite[] propellers;
 	private double[] propellerSpeeds;
 	private double[] propellerRotationAngles;
-	private double propellerBaseSpeed = 20;
+	private double propellerBaseSpeed = 3;
 
 
 	

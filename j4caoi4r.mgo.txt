@@ -1,0 +1,41 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   .gitignore
+#	new file:   SexEngine/.classpath
+#	new file:   SexEngine/.project
+#	new file:   SexEngine/.settings/org.eclipse.jdt.core.prefs
+#	new file:   SexEngine/napomene.txt
+#	new file:   SexEngine/src/engine/components/GameComponent.java
+#	new file:   SexEngine/src/engine/components/RenderingComponent.java
+#	new file:   SexEngine/src/engine/components/TransformComponent.java
+#	new file:   SexEngine/src/engine/components/TransformManager.java
+#	new file:   SexEngine/src/engine/core/Actor.java
+#	new file:   SexEngine/src/engine/core/GameLoopThread.java
+#	new file:   SexEngine/src/engine/core/GameObject.java
+#	new file:   SexEngine/src/engine/core/GameTime.java
+#	new file:   SexEngine/src/engine/core/GameWrapper.java
+#	new file:   SexEngine/src/engine/core/IMultiRenderState.java
+#	new file:   SexEngine/src/engine/core/RenderStateManager.java
+#	new file:   SexEngine/src/engine/core/RenderThread.java
+#	new file:   SexEngine/src/engine/core/UpdateThread.java
+#	new file:   SexEngine/src/engine/datastructures/Pool.java
+#	new file:   SexEngine/src/engine/datastructures/Vector3.java
+#	new file:   SexEngine/src/engine/god/God.java
+#	new file:   SexEngine/src/engine/input/ButtonState.java
+#	new file:   SexEngine/src/engine/input/Buttons.java
+#	new file:   SexEngine/src/engine/input/Input.java
+#	new file:   SexEngine/src/engine/input/KeyState.java
+#	new file:   SexEngine/src/engine/input/KeyboardState.java
+#	new file:   SexEngine/src/engine/input/Keys.java
+#	new file:   SexEngine/src/engine/input/MouseState.java
+#	new file:   SexEngine/src/test/Game.java
+#	new file:   SexEngine/src/test/TestMain.java
+#
+
+Initial commit.
