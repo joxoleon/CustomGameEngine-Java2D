@@ -13,7 +13,7 @@ extends GameComponent
  {
 	//Fields
 	boolean isLastRender = false;
-	boolean drawForwardVector = false;
+	boolean drawForwardVector = true;
 	
 	private static Vector3 position;
 	private static double rotation;

@@ -11,6 +11,9 @@ import java.awt.Robot;
 import java.util.EnumMap;
 import java.util.Map;
 
+import engine.core.God;
+import engine.datastructures.Vector3;
+
 public class MouseState
 {
     Map<Buttons, ButtonState> buttonStates = new EnumMap<Buttons, ButtonState>(Buttons.class);
@@ -46,10 +49,18 @@ public class MouseState
     }
     
     // Dodati poziciju misa u mouse input i metodu setPosition().
-    public Point getPosition()
+    public Point getPositionPoint()
     {
-        return new Point(position);
+    	Vector3 scaleFactor = God.getWorldScaleFactor();
+        return new Point((int)(position.x / scaleFactor.x), (int)(position.y / scaleFactor.y));
 //        return MouseInfo.getPointerInfo().getLocation();
+    }
+    
+    public Vector3 getPositionVector3()
+    {
+    	Vector3 scaleFactor = God.getWorldScaleFactor();
+    	
+    	return new Vector3(position.x / scaleFactor.x, position.y / scaleFactor.y, 1);
     }
     
     public void setPosition(int x, int y)

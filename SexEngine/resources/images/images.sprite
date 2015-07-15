@@ -10,8 +10,9 @@ HelicopterPropeller1 resources/images/HelicopterPropeller_01.png
 HelicopterBody2 resources/images/HelicopterBody_02.png
 HelicopterBody3 resources/images/HelicopterBody_03.png
 HelicopterBody4 resources/images/HelicopterBody_04.png
-<<<<<<< HEAD
-GrassTile1 resources/images/GrassTile_01.jpg
-=======
 HelicopterBody5 resources/images/HelicopterBody_05.png
->>>>>>> eded1be5b51cf42e93955d39c4e4a62d95da492e
+
+
+// Terrain
+GrassTile1 resources/images/GrassTile_01.jpg
+

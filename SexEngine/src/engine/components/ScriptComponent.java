@@ -13,6 +13,7 @@ extends GameComponent
 	{
 		this.parent = parent;
 		God.ScriptManager.addScript(this);
+		
 		//Template Method
 		onAttach();
 	}
@@ -29,7 +30,6 @@ extends GameComponent
 	@Override
 	public abstract	String 
 	getName();
-
 
 	@Override
 	protected void 

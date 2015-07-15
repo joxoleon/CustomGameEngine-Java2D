@@ -95,7 +95,7 @@ implements KeyListener, MouseListener, MouseMotionListener
     
     public static Point getMousePos()
     {
-        Point p = currentMouseState.getPosition();
+        Point p = currentMouseState.getPositionPoint();
         return p;
     }
     
@@ -174,6 +174,7 @@ implements KeyListener, MouseListener, MouseMotionListener
             default:
                 break;
         }
+		
 	}
 
 	@Override
@@ -208,6 +209,7 @@ implements KeyListener, MouseListener, MouseMotionListener
 	public void
 	mouseDragged(MouseEvent event)
 	{
+		nextMouseState.setPosition(event.getLocationOnScreen());
 	}
 
 	@Override

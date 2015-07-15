@@ -45,7 +45,7 @@ extends GameWrapper
 		
 		actor.getTransformComponent().setPosition(1366 / 6, 720 / 6);
 		
-		PlayerControl controlScript = new PlayerControl();
+		PlayerControlMouseScript controlScript = new PlayerControlMouseScript();
 		actor.addScriptComponent(controlScript);
 		
 		HelicopterPropellerScript propellerScript = new HelicopterPropellerScript();

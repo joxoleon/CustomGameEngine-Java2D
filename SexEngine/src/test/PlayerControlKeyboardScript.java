@@ -7,7 +7,7 @@ import engine.input.Input;
 import engine.input.Keys;
 import engine.utility.MathHelper;
 
-public class PlayerControl
+public class PlayerControlKeyboardScript
 extends ScriptComponent
 {
 
@@ -65,9 +65,7 @@ extends ScriptComponent
 			
 			forwardMoveVector.mul(-forward);
 			rightMoveVector.mul(right);
-			//moveVector = forwardMoveVector.add(rightMoveVector);
 			moveVector = Vector3.sum(forwardMoveVector, rightMoveVector);
-//			moveVector.normalize();
 		}
 		else
 		{
@@ -103,7 +101,7 @@ extends ScriptComponent
 	public String 
 	getName()
 	{
-		return "PlayerControlScript";
+		return "PlayerControlKeyboardScript";
 	}
 
 

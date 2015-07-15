@@ -3,12 +3,15 @@ package engine.core;
 import engine.components.TransformManager;
 import engine.components.RenderingManager;
 import engine.components.ScriptManager;
+import engine.datastructures.Vector3;
 import engine.graphics.GraphicsContent;
 import engine.graphics.ModelFactory;
 
 public final class God
 {
 	//Fields
+	private static Vector3 worldScaleFactor;
+	
 	public static final GraphicsContent GraphicsContent = new GraphicsContent();
 	public static final ModelFactory ModelFactory = engine.graphics.ModelFactory.getInstance();
 	
@@ -76,6 +79,18 @@ public final class God
 	private
 	God()
 	{
+	}
+
+	public static Vector3 
+	getWorldScaleFactor()
+	{
+		return new Vector3(worldScaleFactor.x, worldScaleFactor.y, 1);
+	}
+	
+	public static void
+	setWorldScaleFactor(Vector3 worldScaleFactor_)
+	{
+		worldScaleFactor = worldScaleFactor_;
 	}
 
 }
